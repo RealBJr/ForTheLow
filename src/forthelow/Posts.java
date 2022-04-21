@@ -11,4 +11,8 @@ package forthelow;
  */
 public class Posts {
     
+    Private Cars carToSell;
+    
+    
+    
 }
