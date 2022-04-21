@@ -29,5 +29,7 @@ public class CustomerServiceAgent {
         return "" + answer1 + amswer2 + answer3 + answer4;
     }
     
+    public Inventory displayCarPreferences(String answerList){
+    }
     
 }
