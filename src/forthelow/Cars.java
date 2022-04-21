@@ -6,6 +6,7 @@ public class Cars {
     private String brand;
     private Dealership dealer;
     private String color;
+    int lifestyle, salary, colorPreference = 0; 
     
     public Cars(double price, String brand, Dealership dealer, String color) {
         this.price = price;
