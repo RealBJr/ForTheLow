@@ -110,6 +110,9 @@ abstract public class  Cars {
         this.keywords = keywords;
     }
     
-    
+    @Override
+    public String toString() {
+        return "Cars{" + "price=" + price + ", brand=" + brand + ", color=" + color + ", model=" + model + ", mileage=" + mileage + '}';
+    }
 }
 }
