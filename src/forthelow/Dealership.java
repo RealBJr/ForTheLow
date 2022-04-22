@@ -11,7 +11,7 @@ package forthelow;
  */
 public class Dealership {
     
-    private String adress;
+    private String adressOfDealer;
     
     
 }
