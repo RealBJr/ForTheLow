@@ -1,7 +1,7 @@
 
 package forthelow;
 
-public class Post {
+public class Post extends Cars{
     
     Private Cars carToSell;
     
