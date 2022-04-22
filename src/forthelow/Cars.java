@@ -8,7 +8,7 @@ abstract public class  Cars {
     private String color;
     int lifestyle, salary, colorPreference = 0; 
     
-    public Cars(double price, String brand, Dealership dealer, String color) {
+    public Cars(double price, String brand, String addressOfDealer, String color) {
         this.price = price;
         this.brand = brand;
         this.dealer = dealer;
