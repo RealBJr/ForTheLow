@@ -2,5 +2,7 @@
 package forthelow;
 
 public class SearchBar {
-    p
+    public Inventory Search(){
+    }
+    
 }
