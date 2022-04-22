@@ -17,7 +17,8 @@ public class ForTheLow {
             
             if (optionEntered == 1) { 
             
-            
+            SearchBar search = new SearchBar();
+                search.search;
             
             
             }
