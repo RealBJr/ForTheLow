@@ -7,7 +7,7 @@ public class ForTheLow {
     public static void main(String[] args) {
 
         UserManagement userM = new UserManagement();
-        
+        Scanner sc = new Scanner(System.in);
         
          int optionEntered;
         do {
@@ -18,8 +18,9 @@ public class ForTheLow {
             if (optionEntered == 1) { 
             
             SearchBar search = new SearchBar();
-                search.search;
-            
+                System.out.println("What car u want?");
+                search.search(sc.nextLine()).display();
+                
             
             }
             
@@ -71,5 +72,7 @@ public class ForTheLow {
         
         
     }
+    
+}
     
 }
