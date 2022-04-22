@@ -20,7 +20,7 @@ public class CustomerServiceAgent {
         System.out.println("Do you have a preferred car model? \n Press 1: minivan \n Press 2: sportscar \n Press 3: pick-up truck \n Press 4: luxury car \n Press 5: compact cars");
         String answer2 = sc.nextLine();
         
-        System.out.println("What mileage? \n Press 1: brand new (no mileage) \n Press 2: 1k - 50k km \n Press 3: 50k-100k km \n Press 4: 100k+ km");
+        System.out.println("What mileage? \n Press 1: brand new (no mileage) \n Press 2: 100km - 50k km \n Press 3: 50k-100k km \n Press 4: 100k+ km");
         String answer3 = sc.nextLine();
         
         
