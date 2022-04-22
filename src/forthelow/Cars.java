@@ -8,10 +8,10 @@ abstract public class  Cars {
     private String color;
     private int lifestyle, salary, colorPreference = 0; 
     ptivate String model;
+    private String mileage;
     
     
-    
-    public Cars(double price, String brand, String model, String addressOfDealer, String color) {
+    public Cars(double price, String brand, String model, String addressOfDealer, String color, String mileage) {
         this.price = price;
         this.brand = brand;
         this.dealer = dealer;
