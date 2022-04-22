@@ -11,15 +11,14 @@ public class SearchBar {
                 Inventory inventory = new Inventory();
                 
                 for(int j = 0; j < inventory.getInventory().size(); j++){
-                    Set<Post> suitableCars =inventory.getInventory().keySet();
-                    ArrayList<Post> suitableListCars = (ArrayList<Post>) suitableCars;
+                    Collection<Post> suitableCars = inventory.getInventory().keySet();
+                    Iterator<Post> isuitableCars = suitableCars.iterator();
                     
-                        for (int k = 0; k < suitableCars.size(); k++) {
-                            if (suitableListCars.get(k).getKeywords().contains(keyword)) {
-                                result.getInventory().put(suitableListCars.get(k),suitableListCars.get(k).getSetOfNbrs());
-                            }
-                           
+                    while(isuitableCars.hasNext()){
+                        if (isuitableCars.next().getKeywords().contains(keyword)) {
+                            result.getInventory().put(isuitableCars.next(), isuitableCars.next().getSetOfNbrs());
                         }
+                    }
                 }
             }
         }
