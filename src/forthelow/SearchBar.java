@@ -6,7 +6,8 @@ public class SearchBar {
         for(int i = 0; i < search.length(); i++){
             if(search.charAt(i) == 32){
                 String keyword = search.substring(0, i);
-                for(j = 0; j < Inventory.getInventory.size(); i++){
+                Inventory inventory = new Inventory();
+                for(int j = 0; j < inventory.getInventory().size(); j++){
                     
                 }
             }
