@@ -6,7 +6,8 @@ abstract public class  Cars {
     private String brand;
     private Dealership dealer;
     private String color;
-    int lifestyle, salary, colorPreference = 0; 
+    private int lifestyle, salary, colorPreference = 0; 
+    ptivate String model;
     
     public Cars(double price, String brand, String model, String addressOfDealer, String color) {
         this.price = price;
@@ -14,4 +15,5 @@ abstract public class  Cars {
         this.dealer = dealer;
         this.color = color;
     }
+    
 }
