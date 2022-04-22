@@ -7,8 +7,8 @@ public class Post extends Cars{
     
     private String author;
     
-    public Post(double price, String brand, Dealership dealer, String color, String author) {
-        super(price, brand, dealer, color);
+    public Post(double price, String brand, String model, Dealership dealer, String color, String author) {
+        super(price, brand, model, dealer, color);
         this.author = author;
     }
     public void buy(){
