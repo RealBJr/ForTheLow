@@ -6,5 +6,6 @@ public class Inventory {
     public void display(ArrayList<Posts> posts){
     }
    
+    public Inventory sort()
         
 }
