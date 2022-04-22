@@ -20,13 +20,10 @@ package forthelow;
          System.out.println("""
                            ================================================
                             [1] Search Bar
-                            [2] Find all the repeated elements   
-                            [3] Size of entire array
-                            [4] Display which element has repeated a greater number of times
-                            [5] Remove an element
-                            [6] Sort
-                            [7] Display
-                            [8] Exit
+                            [2] Customer Service Agent   
+                            [3] Sell my vehicule
+                            [4] Exit
+                            
                            
                             ===================================================""");
          System.out.print("What option do you want : ");
