@@ -6,7 +6,7 @@ public class Post extends Cars{
     
     private String author;
 
-    public Post(Cars carToSell, String author, double price, String brand, String model, String addressOfDealer, String color, String mileage) {
+    public Post( double price, String brand, String model, String addressOfDealer, String color, String mileage) {
         super(price, brand, model, addressOfDealer, color, mileage);
         this.carToSell = carToSell;
         this.author = author;

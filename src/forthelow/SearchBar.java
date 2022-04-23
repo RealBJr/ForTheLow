@@ -1,6 +1,9 @@
 
 package forthelow;
 
+import java.util.Collection;
+import java.util.Iterator;
+
 public class SearchBar {
    public Inventory search(String search){
         Inventory result = new Inventory();
@@ -13,11 +16,11 @@ public class SearchBar {
                 Inventory inventory = new Inventory();
                 
                 for(int j = 0; j < inventory.getInventory().size(); j++){
-                    Collection<Posts> suitableCars = inventory.getInventory().keySet();
-                    Iterator<Posts> isuitableCars = suitableCars.iterator();
+                    Collection<Post> suitableCars = inventory.getInventory().keySet();
+                    Iterator<Post> isuitableCars = suitableCars.iterator();
                     
                     while(isuitableCars.hasNext()){
-                        Posts n = isuitableCars.next();
+                        Post n = isuitableCars.next();
                         if (n.getKeywords().contains(keyword)) {
                             
                             result.getInventory().clear();
@@ -33,11 +36,11 @@ public class SearchBar {
                Inventory inventory = new Inventory();
                
                  for(int j = 0; j < inventory.getInventory().size(); j++){
-                    Collection<Posts> suitableCars = inventory.getInventory().keySet();
-                    Iterator<Posts> isuitableCars = suitableCars.iterator();
+                    Collection<Post> suitableCars = inventory.getInventory().keySet();
+                    Iterator<Post> isuitableCars = suitableCars.iterator();
                     
                     while(isuitableCars.hasNext()){
-                        Posts n = isuitableCars.next();
+                        Post n = isuitableCars.next();
                         if (n.getKeywords().contains(keyword)) {
                             
                             result.getInventory().clear();
@@ -57,4 +60,5 @@ public class SearchBar {
         }
         return result;
     
+}
 }

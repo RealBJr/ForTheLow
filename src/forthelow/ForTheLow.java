@@ -1,6 +1,8 @@
 
 package forthelow;
 
+import java.util.Scanner;
+
 
 public class ForTheLow {
 //main class 
@@ -27,7 +29,8 @@ public class ForTheLow {
             
              else if (optionEntered == 2) { 
             
-            
+            CustomerServiceAgent csa = new CustomerServiceAgent();
+            csa.questions();
             
             
             }
@@ -75,4 +78,4 @@ public class ForTheLow {
     
 }
     
-}
+

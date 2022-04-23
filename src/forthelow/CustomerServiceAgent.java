@@ -1,6 +1,8 @@
 
 package forthelow;
 
+import java.util.Scanner;
+
 public class CustomerServiceAgent {
     public String getName(){
         
@@ -24,10 +26,11 @@ public class CustomerServiceAgent {
         String answer3 = sc.nextLine();
         
         
-        return "" + answer1 + amswer2 + answer3;
+        return "" + answer1 + answer2 + answer3;
     }
     
     public Inventory displayCarPreferences(String answerList){
+        return null;
     }
     
 }
