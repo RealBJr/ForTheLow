@@ -2,6 +2,7 @@
 package forthelow;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Inventory {
  private HashMap <Post, String> inventory = new HashMap<>();
@@ -29,7 +30,12 @@ public class Inventory {
 
  
     void display() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+for ( Map.Entry x: inventory.entrySet()) {
+            
+            System.out.println( x.getKey());
+            
+        }
+        
     }
     
     public Inventory sort(){
