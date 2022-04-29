@@ -3,7 +3,17 @@ package forthelow;
 
 public class Post extends Cars{
  private Cars carToSell;
- private int position;
+ 
+ private int inventoryPosition;
+
+    public int getInventoryPosition() {
+        return inventoryPosition;
+    }
+
+    public void setInventoryPosition(int inventoryPosition) {
+        this.inventoryPosition = inventoryPosition;
+    }
+    
     
     private String author;
 
