@@ -5,15 +5,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Inventory {
- private HashMap <Post, String> inventory = new HashMap<>();
-
-    public HashMap<Post, String> getInventory() {
+   private TreeMap<Posts, String> inventory = new TreeMap<>();
+     
+     
+     
+    public void display(){
+        
+      
+        
+    }
+   
+    
+    public Inventory sort() {
+        
+        
+        return null;
+    }
+        
+     public TreeMap<Posts, String> getInventory() {
         return inventory;
     }
 
-    public void setInventory(HashMap<Post, String> inventory) {
+    public void setInventory(TreeMap<Posts, String> inventory) {
         this.inventory = inventory;
     }
+
+    
     
  
    public Inventory(){
@@ -30,17 +47,7 @@ public class Inventory {
         
 
  
-    void display() {
-for ( Map.Entry x: inventory.entrySet()) {
-            
-            System.out.println( x.getKey());
-            x
-        }
-        
-    }
     
-    public Inventory sort(){
-     return null;
-    }
-        
+    
+       
 }
