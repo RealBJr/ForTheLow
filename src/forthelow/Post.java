@@ -3,6 +3,7 @@ package forthelow;
 
 public class Post extends Cars{
  private Cars carToSell;
+ private int position;
     
     private String author;
 
