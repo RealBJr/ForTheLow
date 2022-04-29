@@ -25,9 +25,6 @@ public class Inventory {
         inventory.put( new Posts(51000.0, "Ford" , "F-150 2019 ", "7100 Rue Saint-Jacques, Montreal, QC H4B 1V2",  "white" , "100 451 km" ) , "3,3,4");
         inventory.put(new Posts(390000, "RollsRoyce" , " Wraith 2017" , "8525 Decarie Blvd, Montreal, Quebec H4P 2J2" , "black" , "4096 km"), "5,4,2");
         inventory.put(new Posts(55000, "Mitsubishi" , " Outlander 2022" , " 2465 Bd du Curé-Labelle, Laval, QC H7T 1R3" , "brown" , "35000 km"), "3,6,2");
-        
-        
-        
             
         }
         
@@ -37,7 +34,7 @@ public class Inventory {
 for ( Map.Entry x: inventory.entrySet()) {
             
             System.out.println( x.getKey());
-            
+            x
         }
         
     }
