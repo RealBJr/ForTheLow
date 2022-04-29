@@ -16,9 +16,11 @@ public class Inventory {
          while(i.hasNext()) {
              Posts psts = (Posts)i.next();
              Map.Entry me = (Map.Entry)psts;
-             System.out.print(me.getKey() + ": ");
              psts.setInventoryPosition(position++);
+             System.out.print(me.getKey() + ": (click " + psts.getInventoryPosition() + ")");
+             
          }
+      
       
         
     }
