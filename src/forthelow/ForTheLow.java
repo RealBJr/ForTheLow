@@ -4,10 +4,15 @@ package forthelow;
 import java.util.Scanner;
 
 
-public class ForTheLow {
-//main class 
-    public static void main(String[] args) {
+package forthelow;
 
+import java.util.Comparator;
+import java.util.Scanner;
+import java.util.TreeMap;
+
+public class ForTheLow {
+
+    public static void main(String[] args) {
         UserManagement userM = new UserManagement();
         Scanner sc = new Scanner(System.in);
         
@@ -21,7 +26,17 @@ public class ForTheLow {
             
             SearchBar search = new SearchBar();
                 System.out.println("What car u want?");
-                search.search(sc.nextLine()).display();
+                String ans1 = sc.nextLine();
+                System.out.println("How do you want to sort: 1 = Price wise, 2 = Mileage wise");
+                int ans2 = sc.nextInt();
+                    if (ans2 == 1) {
+                    
+                    }
+                    else if (ans2 == 2) {
+                    
+                    }
+                search.search(ans1).setInventory(new TreeMap(Comparator)).display();//TODO implement comparator
+                
                 
             
             }
@@ -78,4 +93,6 @@ public class ForTheLow {
     
 }
     
+
+
 
