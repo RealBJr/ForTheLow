@@ -5,20 +5,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Inventory {
-   private TreeMap<Posts, String> inventory = new TreeMap<>();
-     
-     
-     
+      
+       private TreeMap<Posts, String> inventory = new TreeMap<>();
+       
     public void display(){
-        
+        Set set = inventory.entrySet();
+        int position = 0;
+        Iterator i = set.iterator();
+
+         while(i.hasNext()) {
+             Posts psts = (Posts)i.next();
+             Map.Entry me = (Map.Entry)psts;
+             System.out.print(me.getKey() + ": ");
+             psts.setInventoryPosition(position++);
+         }
       
         
     }
-   
-    
+
     public Inventory sort() {
-        
-        
         return null;
     }
         
@@ -29,9 +34,6 @@ public class Inventory {
     public void setInventory(TreeMap<Posts, String> inventory) {
         this.inventory = inventory;
     }
-
-    
-    
  
    public Inventory(){
             
@@ -44,10 +46,6 @@ public class Inventory {
         inventory.put(new Posts(55000, "Mitsubishi" , " Outlander 2022" , " 2465 Bd du Curé-Labelle, Laval, QC H7T 1R3" , "brown" , "35000 km"), "3,6,2");
             
         }
-        
-
- 
-    
-    
-       
+              
 }
+
