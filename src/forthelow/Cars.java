@@ -16,12 +16,23 @@ abstract public class  Cars {
     private String setOfNbrs;
     
     
-    public Cars(double price, String brand, String model, String addressOfDealer, String color, String mileage) {
+    public Cars(double price, String brand, String model, String addressOfDealer, String color, int mileage) {
         this.price = price;
+        this.model = model;
+        this.mileage = mileage;
         this.brand = brand;
         this.dealer = dealer;
         this.color = color;
-        keywords = new ArrayList<>();
+        this.keywords = new ArrayList<>();
+        this.keywords.add(color);
+        this.keywords.add(brand);
+        this.keywords.add(addressOfDealer);
+        this.keywords.add(String.valueOf(mileage));
+        
+        
+           
+          
+       
     }
 
     public String getSetOfNbrs() {
