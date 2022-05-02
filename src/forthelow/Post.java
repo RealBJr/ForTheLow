@@ -17,10 +17,11 @@ public class Post extends Cars{
     
     private String author;
 
-    public Post( double price, String brand, String model, String addressOfDealer, String color, String mileage) {
-        super(price, brand, model, addressOfDealer, color, mileage);
+   public Posts( double price, String brand, String model, String addressOfDealer,String phoneNumber ,String color, int mileage) {
+        super(price, brand, model, addressOfDealer,phoneNumber ,color, mileage);
         this.carToSell = carToSell;
         this.author = author;
+   
     }
     
    
