@@ -5,22 +5,25 @@ import java.util.ArrayList;
 
 abstract public class  Cars {
     
-    private double price;
+      private double price;
     private String brand;
     private Dealership dealer;
     private String color;
-    private int lifestyle, salary, colorPreference = 0; 
+    private int lifestyle, salary, colorPreference = 0;
     private String model;
-    private String mileage;
+    private int mileage;
     private ArrayList<String> keywords;
     private String setOfNbrs;
-    
-    
-    public Cars(double price, String brand, String model, String addressOfDealer, String color, int mileage) {
+    private String addressOfDealer;
+    private String phoneNumber;
+
+    public Cars(double price, String brand, String model, String addressOfDealer,String phoneNumber ,  String color, int mileage) {
         this.price = price;
         this.model = model;
         this.mileage = mileage;
         this.brand = brand;
+        this.phoneNumber = phoneNumber;
+        this.addressOfDealer = addressOfDealer;
         this.dealer = dealer;
         this.color = color;
         this.keywords = new ArrayList<>();
@@ -35,6 +38,25 @@ abstract public class  Cars {
        
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    
+
+    public String getAddressOfDealer() {
+        return addressOfDealer;
+    }
+
+    public void setAddressOfDealer(String addressOfDealer) {
+        this.addressOfDealer = addressOfDealer;
+    }
+    
+
+    
     public String getSetOfNbrs() {
         return setOfNbrs;
     }
@@ -107,11 +129,11 @@ abstract public class  Cars {
         this.model = model;
     }
 
-    public String getMileage() {
+    public int getMileage() {
         return mileage;
     }
 
-    public void setMileage(String mileage) {
+    public void setMileage(int mileage) {
         this.mileage = mileage;
     }
 
@@ -122,10 +144,11 @@ abstract public class  Cars {
     public void setKeywords(ArrayList<String> keywords) {
         this.keywords = keywords;
     }
-    
+
     @Override
     public String toString() {
-        return "Cars{" + "price=" + price + ", brand=" + brand + ", color=" + color + ", model=" + model + ", mileage=" + mileage + '}';
+        return   "price=" + price + ", brand=" + brand + ", color=" + color + ", model=" + model + ", mileage=" + mileage + "}";
     }
+
 }
 
