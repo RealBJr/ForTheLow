@@ -4,13 +4,43 @@ package forthelow;
 import java.util.Scanner;
 
 public class CustomerServiceAgent {
-    public String getName(){
+   
+     private  String clientsFirstName;
+  private  String clientsLastName;
+
+    public String getClientsFirstName() {
+        return clientsFirstName;
+    }
+
+    public void setClientsFirstName(String clientsFirstName) {
+        this.clientsFirstName = clientsFirstName;
+    }
+
+    public String getClientsLastName() {
+        return clientsLastName;
+    }
+
+    public void setClientsLastName(String clientsLastName) {
+        this.clientsLastName = clientsLastName;
+    }
+
+   
+   
+     public  String getName(){
         
         Scanner sc = new Scanner(System.in);
         
-        System.out.println("what is your full name");
-        return sc.nextLine();
+        System.out.println("what is your first name");
+        clientsFirstName = sc.nextLine();
+        
+         System.out.println("What is your last name");
+        clientsLastName = sc.nextLine();
+        
+        
+        return clientsFirstName + clientsLastName;
     }
+     
+    
     
     public String questions(){
         
