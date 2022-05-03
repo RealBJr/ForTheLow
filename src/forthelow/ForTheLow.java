@@ -13,11 +13,11 @@ import java.util.TreeMap;
 public class ForTheLow {
 
     public static void main(String[] args) {
-         UserManagement userM = new UserManagement();
+        UserManagement userM = new UserManagement();
         Scanner sc = new Scanner(System.in);
         
         int optionEntered = 0;
-        while(optionEntered != 4) {
+        while(optionEntered != 5) {
         try {
         
         // int optionEntered;
@@ -89,40 +89,39 @@ public class ForTheLow {
             
              else  if (optionEntered == 4) { 
             
-            
-                 System.out.println("See you next time :) " );
+                 Inventory inv = new Inventory();
+                 inv.display();
+                 inv.displayInventoryPositionDecision(); 
+                 inv.Decision();
+                
             
             
             }
             
+             else if (optionEntered == 5) {
+                
+                  System.out.println("See you next time :) " );
+                  
+
+            }
+                     
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        } while( optionEntered != 4);
+        } while( optionEntered != 5);
         
         
         
         
         } catch(Exception e){
             
-            System.out.println("Enter the proper input");
+            System.out.println("Please try again");
             
             
         }
         
         
         }
+        
+    }
         
     
 }
