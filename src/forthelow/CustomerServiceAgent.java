@@ -60,7 +60,40 @@ public class CustomerServiceAgent {
     }
     
     public Inventory displayCarPreferences(String answerList){
-        return null;
+        Inventory cars = new Inventory();
+        final Stack<Character> charsAnswerList = new Stack<>();
+        int finalLength = answerList.length();
+        
+        //pushing each chars in the stack of charsAnswerList
+        for (int i = finalLength - 1; i > finalLength; i--) {
+            charsAnswerList.push(answerList.charAt(i));
+        }
+        
+        //compare 1st chars in values of post with stack.pop()
+        Collection<String> values = cars.getInventory().values();
+        
+            //creating a List of values that i would easily manipulate
+            List<String> valuesAsList = new ArrayList();
+            valuesAsList.addAll(values);
+       
+        // for each values compare the chars with the stack.pop
+        Stack<Character> copy;
+        
+        int maxRepeated = 0;
+        
+        for (int i = 0; i < valuesAsList.size(); i++) {
+            
+            String singleValue = valuesAsList.get(i);
+            copy = charsAnswerList;
+            
+            int repeated = 0; // nbr of times there are common nbrs
+            for (int j = 0; j < singleValue.length(); j++) {
+                if (singleValue.charAt(j) == copy.pop()) {
+                    repeated++;
+                }
+            }
+        }
+        return cars;
     }
     
 }
