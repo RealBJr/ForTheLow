@@ -13,10 +13,14 @@ import java.util.TreeMap;
 public class ForTheLow {
 
     public static void main(String[] args) {
-        UserManagement userM = new UserManagement();
+         UserManagement userM = new UserManagement();
         Scanner sc = new Scanner(System.in);
         
-         int optionEntered;
+        int optionEntered = 0;
+        while(optionEntered != 4) {
+        try {
+        
+        // int optionEntered;
         do {
             
              optionEntered = userM.menuTab();
@@ -31,11 +35,34 @@ public class ForTheLow {
                 int ans2 = sc.nextInt();
                     if (ans2 == 1) {
                     
+                      //  TreeMap<Posts,String> trMap = new TreeMap<>(new Comparators1());
+                        
+                        
+                      
+                       Inventory inv = search.search(ans1, new Comparators1());
+                                 
+                                 
+                                inv.display();
+                                inv.displayInventoryPositionDecision(); 
+                                inv.Decision();
+                                         
+                                 
+                                 
+                                 
+                        
+                                 
+                        
                     }
                     else if (ans2 == 2) {
                     
+                         Inventory inv2 = search.search(ans1, new Comparators1());
+                         inv2.display();
+                         inv2.displayInventoryPositionDecision();
+                         inv2.Decision();
+                                 
+                            
                     }
-                search.search(ans1).setInventory(new TreeMap(Comparator)).display();//TODO implement comparator
+                //TODO implement comparator
                 
                 
             
@@ -45,6 +72,8 @@ public class ForTheLow {
              else if (optionEntered == 2) { 
             
             CustomerServiceAgent csa = new CustomerServiceAgent();
+           
+            csa.getName();
             csa.questions();
             
             
@@ -85,11 +114,16 @@ public class ForTheLow {
         
         
         
+        } catch(Exception e){
+            
+            System.out.println("Enter the proper input");
+            
+            
+        }
         
         
+        }
         
-        
-    }
     
 }
     
