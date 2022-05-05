@@ -11,6 +11,49 @@ public class Inventory {
     Scanner sc = new Scanner(System.in);
     private TreeMap<Posts, String> inventory;
 
+      public String sellMyVehicule(){
+        
+       
+        
+         String tempansw = "";
+        System.out.println("What is the price of the car?");
+        double answer1 = sc.nextDouble();
+        
+        if (answer1 < 25000 ) {
+            
+             tempansw = "1";
+        }
+        
+        if (answer1 >= 25000 || answer1 <= 50000) {
+            
+            tempansw = "2";
+        }
+        
+        
+        
+        
+        
+        System.out.println("What is the brand of the car");
+        String answer2 = sc.nextLine();
+        
+        System.out.println("What is the model of the car?");
+       String answer3 = sc.nextLine();
+       
+        System.out.println("What is the mileage of the car?");
+        int answer4 = sc.nextInt();
+        
+        System.out.println("What is your adress");
+        String answer5 = sc.nextLine();
+        
+        System.out.println("What is your phone number");
+        
+        inventory.put(finalPost, answer5);  // ask Junior if he wants to make a seperate Inventory for new Vehicules 
+        
+        
+        return null;
+    }
+    
+    
    
     
     
@@ -94,6 +137,7 @@ public class Inventory {
     public  void Decision() throws IOException{
        
         CustomerServiceAgent csa = new CustomerServiceAgent();
+          csa.getName();
        Posts tempPost = finalPost;
         double downPaymentAmount = (0.10 * tempPost.getPrice());
        
@@ -104,7 +148,7 @@ public class Inventory {
         
         if (answer == 1) {
             
-           csa.getName();
+           
            
            
            
@@ -138,7 +182,7 @@ public class Inventory {
         
         if (answer== 2) {
             
-            csa.getName();
+            
             
             System.out.println("For how long do you want to lease it");
             
