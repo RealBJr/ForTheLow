@@ -80,9 +80,11 @@ public class CustomerServiceAgent {
         for (int i = 0; i < valuesAsList.size(); i++) {
             String singleValue = valuesAsList.get(i);
             int repeated = 0; // nbr of times there are common nbrs
-                if (singleValue.charAt(i) == charsAnswerList.get(i)) {
+                for(int j = 0; j<singleValue.length(); j++){
+                if (singleValue.charAt(j) == charsAnswerList.get(j)) {
                     repeated++;
                 }
+            }
             
             if (repeated > maxRepeated) {
                 maxRepeated = repeated;
