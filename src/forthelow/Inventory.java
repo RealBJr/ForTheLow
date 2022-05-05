@@ -61,6 +61,12 @@ public class Inventory {
                 break;
                 
             }
+              
+               else if(!i.hasNext()){
+                System.out.println("That car doesnt exist, plz try again");
+                finalPost = null;
+                return displayInventoryPositionDecision();
+            }
             
             
            
