@@ -18,39 +18,94 @@ public class Inventory {
     Scanner sc = new Scanner(System.in);
     private TreeMap<Post, String> inventory;
 
-    public String sellMyVehicule() {
+    public void sellMyVehicule() {
 
-        String tempansw = "";
+       String tempansw = "";
+         String tempAns2 = "";
+         String tempAns3 = "";
         System.out.println("What is the price of the car?");
         double answer1 = sc.nextDouble();
-
-        if (answer1 < 25000) {
-
-            tempansw = "1";
+        
+        if (answer1 < 25000 ) {
+            
+             tempansw = "1";
         }
-
-        if (answer1 >= 25000 || answer1 <= 50000) {
-
+        
+        if (answer1 >= 25000 && answer1 <= 50000) {
+            
             tempansw = "2";
         }
-
+        
+        if (answer1>= 50000 && answer1 <=75000) {
+            
+            tempansw = "3";
+        }
+        
+        if (answer1 >= 75000 && answer1 <= 100000) {
+            
+             tempansw = "4";
+            
+        }
+        
+        if (answer1> 100000 ) {
+            
+            tempansw = "5";
+            
+        }
+      
+        
+        
         System.out.println("What is the brand of the car");
         String answer2 = sc.nextLine();
-
-        System.out.println("What is the model of the car?");
+        
+        
+        
+        System.out.println("What is the model of the car " );
         String answer3 = sc.nextLine();
-
-        System.out.println("What is the mileage of the car?");
-        int answer4 = sc.nextInt();
-
+        
+        System.out.println("to what category does it belong? \n Press 1: minivan \n Press 2: sportscar \n Press 3: pick-up truck \n Press 4: luxury car \n Press 5: compact cars \n Press 6 : SUV");
+        String answer33 = sc.nextLine();
+       
+     
+        
+        System.out.println("What is the color of the car");
+        String answer4 = sc.nextLine();
+       
+        System.out.println("What is the mileage of the car? ");
+        int answerMileage = sc.nextInt();
+        if (answerMileage < 100) {
+            tempAns2 = "1";
+            
+        }
+        
+        if (answerMileage >= 100 && answerMileage <= 50000) {
+            
+            tempAns2 = "2";
+        }
+        
+        if (answerMileage > 50000 && answerMileage <= 100000 ) {
+             tempAns2 = "3";
+            
+        }
+        
+        if (answerMileage > 100000) {
+             tempAns2 = "4";
+            
+        }
+        
+           String final1 = tempansw + answer33 + tempAns2;
+        
         System.out.println("What is your adress");
         String answer5 = sc.nextLine();
-
+        
         System.out.println("What is your phone number");
-
-        inventory.put(finalPost, answer5);  // ask Junior if he wants to make a seperate Inventory for new Vehicules 
-
-        return null;
+        String answer6 = sc.nextLine();
+        
+        
+        inventory.put(new Posts(answer1,answer2,answer3,answer5,answer6,answer4,answerMileage), final1);  // ask Junior if he wants to make a seperate Inventory for new Vehicules 
+        
+        System.out.println("Your post has been added to our application!");
+        
     }
 
     public void display() {
