@@ -1,64 +1,66 @@
-
 package forthelow;
 
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class SearchBar {
-   public Inventory search(String search){
+
+    public Inventory search(String search) {
         Inventory result = new Inventory();
-        
-        
-        
-        for(int i = 0; i < search.length(); i++){//basic implementation where we only search for first keyword
-            if(search.charAt(i) == 32){
+
+        for (int i = 0; i < search.length(); i++) {//basic implementation where we only search for first keyword
+            if (search.charAt(i) == ' ') {
                 String keyword = search.substring(0, i);
                 Inventory inventory = new Inventory();
-                
-                for(int j = 0; j < inventory.getInventory().size(); j++){
-                    Collection<Post> suitableCars = inventory.getInventory().keySet();
-                    Iterator<Post> isuitableCars = suitableCars.iterator();
-                    
-                    while(isuitableCars.hasNext()){
-                        Post n = isuitableCars.next();
-                        if (n.getKeywords().contains(keyword)) {
-                            
-                            result.getInventory().clear();
-                            result.getInventory().put(n, n.getSetOfNbrs());
-                        }
-                    }
+
+                List<Posts> collected = inventory.getInventory().keySet()
+                        .stream()
+                        .filter(n -> n.getKeywords().contains(keyword))
+                        .collect(Collectors.toList());
+
+                result.getInventory().clear();
+                for (int j = 0; j < collected.size(); j++) {
+                    result.getInventory().put(collected.get(j), collected.get(j).getSetOfNbrs());
                 }
-            }
-            
-            else {
-                
-               String keyword = search; 
-               Inventory inventory = new Inventory();
-               
-                 for(int j = 0; j < inventory.getInventory().size(); j++){
-                    Collection<Post> suitableCars = inventory.getInventory().keySet();
-                    Iterator<Post> isuitableCars = suitableCars.iterator();
-                    
-                    while(isuitableCars.hasNext()){
-                        Post n = isuitableCars.next();
-                        if (n.getKeywords().contains(keyword)) {
-                            
-                            result.getInventory().clear();
-                            result.getInventory().put(n, n.getSetOfNbrs());
-                        }
-                    }
+//                    for(int j = 0; j < inventory.getInventory().size(); j++){
+//                    Collection<Posts> suitableCars = inventory.getInventory().keySet();
+//                    Iterator<Posts> isuitableCars = suitableCars.iterator();
+//                    
+//                    while(isuitableCars.hasNext()){
+//                        Posts n = isuitableCars.next();
+//                        if (n.getKeywords().contains(keyword)) {
+//                            
+//                            result.getInventory().clear();
+//                            result.getInventory().put(n, n.getSetOfNbrs());
+//                        }
+//                    }
+//                }
+            } else {
+
+                String keyword = search;
+                Inventory inventory = new Inventory();
+
+                List<Posts> collected = inventory.getInventory().keySet()
+                        .stream()
+                        .filter(n -> n.getKeywords().contains(keyword))
+                        .collect(Collectors.toList());
+
+                result.getInventory().clear();
+                for (int j = 0; j < collected.size(); j++) {
+                    result.getInventory().put(collected.get(j), collected.get(j).getSetOfNbrs());
                 }
-               
-               
-                
-                
                 
             }
-            
-            
-            
+
         }
-        return result;
+        return result ;
+    }
     
+    public static void main(String[] args) {
+        SearchBar s = new SearchBar();
+        s.search("white");
+    }
+
 }
-}
+
+
