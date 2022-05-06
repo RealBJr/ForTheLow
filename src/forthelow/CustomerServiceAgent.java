@@ -76,8 +76,8 @@ public class CustomerServiceAgent {
         
         int maxRepeated = 0;
         TreeMap<Posts, String> recommendation = new TreeMap<>();
-        if (charsAnswerList.get(0).equals(valuesAsList.get(0).charAt(0))) {
-            for (int i = 1; i < valuesAsList.size(); i++) {
+        for (int i = 1; i < valuesAsList.size(); i++) {
+                if (charsAnswerList.get(0).equals(valuesAsList.get(i).charAt(0))) {
                 String singleValue = valuesAsList.get(i);
                 int repeated = 0; // nbr of times there are common nbrs
                 for (int j = 1; j < singleValue.length(); j++) {
