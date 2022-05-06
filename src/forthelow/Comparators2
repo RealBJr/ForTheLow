@@ -1,0 +1,41 @@
+*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1;
+
+import java.util.Comparator;
+
+/**
+ *
+ * @author 2177095
+ */
+public class Comparators2 implements Comparator<Posts> {
+
+    @Override
+    public int compare(Posts o1, Posts o2) {
+      
+    return o1.getMileage() - o2.getMileage();
+
+//To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    
+
+    
+  
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
