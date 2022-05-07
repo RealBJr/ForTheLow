@@ -55,15 +55,17 @@ public class CustomerServiceAgent {
         System.out.println("What mileage? \n Press 1: brand new (no mileage) \n Press 2: 100km - 50k km \n Press 3: 50k-100k km \n Press 4: 100k+ km");
         String answer3 = sc.nextLine();
         
-        return "" + answer1 + answer2 + answer3;
+        String finalChoice = answer1 + answer2 + answer3;
+        return finalChoice;
     }
     
     public Inventory displayCarPreferences(String answerList) {
+        
         Inventory cars = new Inventory();
-        final ArrayList<Character> charsAnswerList = new ArrayList<>();
-
+        ArrayList<Character> charsAnswerList = new ArrayList<>();
+ int repeated = 0;
         //pushing each chars in the arrayList of charsAnswerList
-        for (int i = 0; i < charsAnswerList.size(); i++) {
+        for (int i = 0; i < answerList.length(); i++) {
             charsAnswerList.add(answerList.charAt(i));
         }
 
@@ -76,11 +78,10 @@ public class CustomerServiceAgent {
         
         int maxRepeated = 0;
         TreeMap<Posts, String> recommendation = new TreeMap<>();
-        
-            for (int i = 1; i < valuesAsList.size(); i++) {
+        for (int i = 1; i < valuesAsList.size(); i++) {
                 if (charsAnswerList.get(0).equals(valuesAsList.get(i).charAt(0))) {
                 String singleValue = valuesAsList.get(i);
-                int repeated = 0; // nbr of times there are common nbrs
+                // nbr of times there are common nbrs
                 for (int j = 1; j < singleValue.length(); j++) {
                     if (singleValue.charAt(j) == charsAnswerList.get(j)) {
                         repeated++;
@@ -94,8 +95,12 @@ public class CustomerServiceAgent {
                 if (repeated == maxRepeated) {
                     recommendation.put(getKey(cars.getInventory(), valuesAsList.get(i)), valuesAsList.get(i));
                 }
+                   
             }            
         }
+         if (repeated == 0) {
+                        System.out.println("Did not find any  good match according to ur preferences so we displayed what fits ur budget");
+                    }
         
         cars.setInventory(new TreeMap<Posts, String>(recommendation));
         return cars;
