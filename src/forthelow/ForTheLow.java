@@ -28,10 +28,6 @@ public class ForTheLow {
                 int ans2 = sc.nextInt();
                     if (ans2 == 1) {
                     
-                      //  TreeMap<Posts,String> trMap = new TreeMap<>(new Comparators1());
-                        
-                        
-                      
                         Inventory newInv = search.search(ans1, new Comparators1());
                                 if (newInv.getInventory().isEmpty()) {
                             
@@ -46,16 +42,20 @@ public class ForTheLow {
                                 inv.getInventory().remove(chosenPost);
                                  
                                  
-                                 
-                        
-                                 
-                        
                     }
                     else if (ans2 == 2) {
                     
                         
                         
                       Inventory newInv2    =  search.search(ans1, new Comparators2());
+                      if (newInv2.getInventory().isEmpty()) {
+                            
+                                    System.out.println("That car doesnt exist");     
+                                    
+                                  break;  
+                        }
+                      
+                      
                          newInv2.display();
                           Posts chosenPost = newInv2.displayInventoryPositionDecision();
                          inv.getInventory().remove(chosenPost);
@@ -75,7 +75,14 @@ public class ForTheLow {
             CustomerServiceAgent csa = new CustomerServiceAgent();
            
             csa.getName();
-            csa.questions();
+           String decisionChoice = csa.questions();
+        Inventory inv3 =    csa.displayCarPreferences(decisionChoice);
+        
+        inv3.display();
+         Posts chosenPost = inv3.displayInventoryPositionDecision();
+         inv3.Decision();
+         inv.getInventory().remove(chosenPost);
+            
             
             
             }
@@ -125,5 +132,5 @@ public class ForTheLow {
         }
         
     }
-
+  
 }
