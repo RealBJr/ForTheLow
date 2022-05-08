@@ -16,7 +16,7 @@ abstract public class  Cars {
     private String addressOfDealer;
     private String phoneNumber;
 
-    public Cars(double price, String brand, String model, String addressOfDealer,String phoneNumber ,  String color, int mileage) {
+public Cars(double price, String brand, String model, String addressOfDealer,String phoneNumber ,  String color, int mileage) {
         this.price = price;
         this.model = model;
         this.mileage = mileage;
@@ -26,10 +26,10 @@ abstract public class  Cars {
         this.dealer = dealer;
         this.color = color;
         this.keywords = new ArrayList<>();
-        this.keywords.add(color);
-        this.keywords.add(brand);
-        this.keywords.add(addressOfDealer);
-        this.keywords.add(String.valueOf(mileage));
+        this.keywords.add(color.strip().toLowerCase());
+        this.keywords.add(brand.strip().toLowerCase());
+        this.keywords.add(addressOfDealer.strip().toLowerCase());
+        this.keywords.add(String.valueOf(mileage).strip().toLowerCase());
         
         
            
