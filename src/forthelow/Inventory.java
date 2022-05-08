@@ -205,7 +205,7 @@ public class Inventory {
              String answer2  = sc1.nextLine();
            
               System.out.println("Enter CVV");
-             String answer3  = sc.nextLine();
+             String answer3  = sc1.nextLine();
            
            
             System.out.println("Your " + tempPost.getBrand() + "," + tempPost.getModel() + " has been reserved at " +  tempPost.getAddressOfDealer() );
@@ -220,7 +220,7 @@ public class Inventory {
             
             BufferedWriter br = new BufferedWriter(new FileWriter("/Users/keethen/Documents/BillPurchase.txt"));
             
-            br.write("Thank you " +csa.getClientsLastName() + csa.getClientsLastName() + "for shopping with ForTheLow " + " \n here is your bill " + "You payed " + downPaymentAmount);
+            br.write("Thank you " +csa.getClientsFirstName() + csa.getClientsLastName() + "for shopping with ForTheLow " + " \n here is your bill " + "You payed " + downPaymentAmount);
             br.close();
             
             
@@ -242,7 +242,7 @@ public class Inventory {
             
             BufferedWriter br = new BufferedWriter(new FileWriter("/Users/keethen/Documents/LeasePurchase.txt"));
             
-            br.write("Thank you " +csa.getClientsLastName() + "," +csa.getClientsLastName() + "for dealing with ForTheLow " + " The dealership at " + tempPost.getAddressOfDealer() + "will get back to you");
+            br.write("Thank you " +csa.getClientsFirstName() + "," +csa.getClientsLastName() + "for dealing with ForTheLow " + " The dealership at " + tempPost.getAddressOfDealer() + "will get back to you");
             br.close();
             
             
@@ -292,13 +292,14 @@ public class Inventory {
         inventory.put(new Posts(25000.0, "Toyota", "Sienna 2021", "3333 Chem. de la Côte-de-Liesse, Saint-Laurent, QC H4N 3C2 ", " (514) 748-7777" ,"blue", 15000), "112");
         inventory.put(new Posts(10000.0, "Honda", "Civic 2010 ", "12435 Blvd. Laurentien, Montreal, Quebec H4K 2J2","(514) 337-2330" , "white", 101000), "154");
         inventory.put(new Posts(51000.0, "Ford", "F-150 2019 ", "7100 Rue Saint-Jacques, Montreal, QC H4B 1V2", ": (514) 487-7777" ,"white", 100451), "334");
-        inventory.put(new Posts(390000, "RollsRoyce", "Wraith 2017", "8525 Decarie Blvd, Montreal, Quebec H4P 2J2","(514) 738-3030" , "black", 4096), "542");
-        inventory.put(new Posts(55000, "Mitsubishi", "Outlander 2022", "2465 Bd du Curé-Labelle, Laval, QC H7T 1R3", "+1 833-960-1658", "brown", 35000), "362");
-        inventory.put(new Posts(13590, "Kia", "Forte Ex 2014", "2250 Bd Crémazie O, Montréal, QC H2P 1C6","(514) 695-7777" , "brown", 101834 ), "154");
-        inventory.put(new Posts(59654, "Acura", "Rdx 2021", "4040 Rue Jean-Talon O, Montréal, QC H4P 1V5", "(514) 340-1344" , "black", 11650 ), "362");
-        inventory.put(new Posts(169800, "Audi", "RS 7 2021", "5805 Trans Canada Route, Saint-Laurent, Quebec H4T 1A1", " (514) 364-7777", "Grey", 10 ), "521");
-        
-      //  inventory.remove(finalPost);
+        inventory.put(new Posts(390000.0, "RollsRoyce", "Wraith 2017", "8525 Decarie Blvd, Montreal, Quebec H4P 2J2","(514) 738-3030" , "black", 4096), "542");
+        inventory.put(new Posts(55000.0, "Mitsubishi", "Outlander 2022", "2465 Bd du Curé-Labelle, Laval, QC H7T 1R3", "+1 833-960-1658", "brown", 35000), "362");
+        inventory.put(new Posts(13590.0, "Kia", "Forte Ex 2014", "2250 Bd Crémazie O, Montréal, QC H2P 1C6","(514) 695-7777" , "brown", 101834 ), "154");
+        inventory.put(new Posts(59654.0, "Acura", "Rdx 2021", "4040 Rue Jean-Talon O, Montréal, QC H4P 1V5", "(514) 340-1344" , "black", 11650 ), "362");
+        inventory.put(new Posts(169800.0, "Audi", "RS 7 2021", "5805 Trans Canada Route, Saint-Laurent, Quebec H4T 1A1", " (514) 364-7777", "Grey", 10 ), "521");
+        inventory.put(new Posts(138910.0, "Nissan", "GTR premium 2018","3500 Rue Jean-Talon O, Montréal, QC H3R 2E8", " (514) 509-7777" ,"yellow" , 52371 ), "523");
+        inventory.put(new Posts(24888.0, "Subaru", "Forester Touring 2017", " 4900 Pare St, Montreal, Quebec H4P 1P3", " (514) 737-1880" , "orange" ,49324 ), "162");
+        inventory.put(new Posts(45800.0, "Mercedes-Benz"," S-Class S550 2015" , "7800 Decarie Blvd, Montreal, Quebec H4P 2H4" , "(514) 359-7171", "black", 149179), "244");
 
         
     }
@@ -307,7 +308,6 @@ public class Inventory {
         
          this.inventory = new TreeMap<>(com);
     }
-
 
     
 }
