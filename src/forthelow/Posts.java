@@ -1,7 +1,8 @@
 
 package forthelow;
 
-public class Posts extends Cars{
+public class Posts extends Cars implements Comparable<Posts> {
+    
     private Cars carToSell;
  
  private int inventoryPosition;
