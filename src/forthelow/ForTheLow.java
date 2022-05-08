@@ -6,8 +6,10 @@ import java.util.TreeMap;
 
 public class ForTheLow {
 
-    UserManagement userM = new UserManagement();
+     UserManagement userM = new UserManagement();
+    
         Scanner sc = new Scanner(System.in);
+             Scanner sc2 = new Scanner(System.in); // we created a second scanner because the first one would statr to bug
         Inventory inv = new Inventory();
         int optionEntered = 0;
         while(optionEntered != 5) {
@@ -23,7 +25,7 @@ public class ForTheLow {
             
             SearchBar search = new SearchBar();
                 System.out.println("What car u want?");
-                String ans1 = sc.nextLine();
+                String ans1 = sc2.nextLine();
                 System.out.println("How do you want to sort: 1 = Price wise, 2 = Mileage wise");
                 int ans2 = sc.nextInt();
                     if (ans2 == 1) {
