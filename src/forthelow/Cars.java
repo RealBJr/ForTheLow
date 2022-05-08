@@ -3,8 +3,9 @@ package forthelow;
 
 import java.util.ArrayList;
 
-abstract public class  Cars {
-     private double price;
+abstract public class Cars {
+
+    private double price;
     private String brand;
     private Dealership dealer;
     private String color;
@@ -16,7 +17,7 @@ abstract public class  Cars {
     private String addressOfDealer;
     private String phoneNumber;
 
-public Cars(double price, String brand, String model, String addressOfDealer,String phoneNumber ,  String color, int mileage) {
+    public Cars(double price, String brand, String model, String addressOfDealer, String phoneNumber, String color, int mileage) {
         this.price = price;
         this.model = model;
         this.mileage = mileage;
@@ -25,16 +26,32 @@ public Cars(double price, String brand, String model, String addressOfDealer,Str
         this.addressOfDealer = addressOfDealer;
         this.dealer = dealer;
         this.color = color;
-        this.keywords = new ArrayList<>();
-        this.keywords.add(color.strip().toLowerCase());
-        this.keywords.add(brand.strip().toLowerCase());
-        this.keywords.add(addressOfDealer.strip().toLowerCase());
-        this.keywords.add(String.valueOf(mileage).strip().toLowerCase());
-        
-        
-           
-          
-       
+        this.keywords = new ArrayList<String>();
+        this.keywords.addAll(toKeywords(color));
+        this.keywords.addAll(toKeywords(brand));
+        this.keywords.addAll(toKeywords(model));
+        this.keywords.addAll(toKeywords(addressOfDealer));
+        this.keywords.addAll(toKeywords(String.valueOf(mileage)));
+
+    }
+
+    private static ArrayList<String> toKeywords(String word) {
+
+        ArrayList<String> toKeywords = new ArrayList<>();
+        int i = 0;
+
+        for (i = 0; i < word.length(); i++) {
+            if (word.charAt(i) == ' ') {
+                toKeywords.add(word.substring(0, i).toLowerCase());
+                word = word.substring(i + 1);
+                i = -1;
+            } else if (i == word.length() - 1) {
+                toKeywords.add(word);
+            }
+
+        }
+
+        return toKeywords;
     }
 
     public String getPhoneNumber() {
@@ -44,7 +61,6 @@ public Cars(double price, String brand, String model, String addressOfDealer,Str
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
 
     public String getAddressOfDealer() {
         return addressOfDealer;
@@ -53,9 +69,7 @@ public Cars(double price, String brand, String model, String addressOfDealer,Str
     public void setAddressOfDealer(String addressOfDealer) {
         this.addressOfDealer = addressOfDealer;
     }
-    
 
-    
     public String getSetOfNbrs() {
         return setOfNbrs;
     }
@@ -146,7 +160,7 @@ public Cars(double price, String brand, String model, String addressOfDealer,Str
 
     @Override
     public String toString() {
-        return   "price: " + price + ", brand:" + brand + ", color:" + color + ", model:" + model + ", mileage:" + mileage + "}";
+        return "price: " + price + ", brand:" + brand + ", color:" + color + ", model:" + model + ", mileage:" + mileage + "}";
     }
 
 }
