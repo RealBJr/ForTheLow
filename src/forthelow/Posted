@@ -11,7 +11,7 @@ package javaapplication1;
  */
 public class Posted extends Posts{
     
-    public Posted(double price, String brand, String model, String addressOfDealer, String phoneNumber, String color, int mileage) {
+     public Posted(double price, String brand, String model, String addressOfDealer, String phoneNumber, String color, int mileage) {
         super(price, brand, model, addressOfDealer, phoneNumber, color, mileage);
     }
     
