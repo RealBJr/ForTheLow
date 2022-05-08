@@ -12,7 +12,8 @@ public class SearchBar {
         
         
          for (int i = 0; i < search.length(); i++) {//basic implementation where we only search for first keyword
-            if (search.charAt(i) == ' ') {
+             
+             if (search.charAt(i) == ' ') {
                 String keyword = search.substring(0, i);
                 Inventory inventory = new Inventory();
 
@@ -55,6 +56,19 @@ public class SearchBar {
                 
             }
             search = search.substring(i+1);
+        }
+       if (result.getInventory().isEmpty()){
+            String keyword = search.strip().stripTrailing().toLowerCase();
+            Inventory inventory = new Inventory();
+
+                List<Posts> collected = inventory.getInventory().keySet()
+                        .stream()
+                        .filter(n -> n.getKeywords().contains(keyword))
+                        .collect(Collectors.toList());
+                
+                for (int j = 0; j < collected.size(); j++) {
+                    result.getInventory().put(collected.get(j), collected.get(j).getSetOfNbrs());
+                }
         }
         return result ;
     }
