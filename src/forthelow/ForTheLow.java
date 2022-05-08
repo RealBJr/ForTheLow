@@ -6,7 +6,7 @@ import java.util.TreeMap;
 
 public class ForTheLow {
 
-     UserManagement userM = new UserManagement();
+    UserManagement userM = new UserManagement();
         Scanner sc = new Scanner(System.in);
         Inventory inv = new Inventory();
         int optionEntered = 0;
@@ -74,7 +74,7 @@ public class ForTheLow {
             
             CustomerServiceAgent csa = new CustomerServiceAgent();
            
-            csa.getName();
+         //   csa.getName();
            String decisionChoice = csa.questions();
         Inventory inv3 =    csa.displayCarPreferences(decisionChoice);
         
@@ -132,5 +132,4 @@ public class ForTheLow {
         }
         
     }
-  
 }
