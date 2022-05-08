@@ -13,7 +13,7 @@ import java.util.TreeMap;
 
 public class Inventory {
 
-    Posts finalPost = null;
+   Posts finalPost = null;
     Scanner sc1 = new Scanner(System.in);
     Scanner sc = new Scanner(System.in);
     private TreeMap<Posts, String> inventory;
@@ -199,7 +199,7 @@ public class Inventory {
             System.out.println("The total for the down payment will be : " + downPaymentAmount);
            
             System.out.println("Enter your  9 digit card number");
-            String answer1  = sc.nextLine();
+            String answer1  = sc1.nextLine();
             
             System.out.println("Enter the Exp date");
              String answer2  = sc1.nextLine();
@@ -288,7 +288,7 @@ public class Inventory {
 
         
         this.inventory = new TreeMap<>();
-        inventory.put(new Posts(55000.0, "BMW", "Series 4 2017", "2000 Transcanadienne Su Dorval QC H9P 2N4 ","(514) 683-2000","red", 52000), "223");
+        inventory.put(new Posts(55000.0, "BMW", "Series 4 2017", "2000 Transcanadienne Su Dorval QC H9P 2N4 ","(514) 683-2000","red", 52000), "323");
         inventory.put(new Posts(25000.0, "Toyota", "Sienna 2021", "3333 Chem. de la Côte-de-Liesse, Saint-Laurent, QC H4N 3C2 ", " (514) 748-7777" ,"blue", 15000), "112");
         inventory.put(new Posts(10000.0, "Honda", "Civic 2010 ", "12435 Blvd. Laurentien, Montreal, Quebec H4K 2J2","(514) 337-2330" , "white", 101000), "154");
         inventory.put(new Posts(51000.0, "Ford", "F-150 2019 ", "7100 Rue Saint-Jacques, Montreal, QC H4B 1V2", ": (514) 487-7777" ,"white", 100451), "334");
@@ -307,6 +307,7 @@ public class Inventory {
         
          this.inventory = new TreeMap<>(com);
     }
+
 
     
 }
