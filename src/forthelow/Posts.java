@@ -1,10 +1,12 @@
 
 package forthelow;
 
-public class Post extends Cars{
- private Cars carToSell;
+public class Posts extends Cars{
+    private Cars carToSell;
  
  private int inventoryPosition;
+int position = 0;
+   
 
     public int getInventoryPosition() {
         return inventoryPosition;
@@ -17,7 +19,7 @@ public class Post extends Cars{
     
     private String author;
 
-   public Posts( double price, String brand, String model, String addressOfDealer,String phoneNumber ,String color, int mileage) {
+    public Posts( double price, String brand, String model, String addressOfDealer,String phoneNumber ,String color, int mileage) {
         super(price, brand, model, addressOfDealer,phoneNumber ,color, mileage);
         this.carToSell = carToSell;
         this.author = author;
@@ -29,5 +31,16 @@ public class Post extends Cars{
     }
     public void bookAnAppointment(){
     }
+
+    @Override
+    public int compareTo(Posts o) {
+       
+       
+        
+        return this.getBrand().compareTo(o.getBrand());
+
+//To change body of generated methods, choose Tools | Templates.
+    }
+    
     
 }
