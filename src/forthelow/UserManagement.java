@@ -12,8 +12,11 @@ import java.util.Scanner;
  * @author junio
  */
 public class UserManagement {
-    Scanner sc = new Scanner(System.in);
-    public int menuTab(){
+    
+      int menuTab() {
+       
+        Scanner sc = new Scanner(System.in);
+   
         
         
         
@@ -23,7 +26,8 @@ public class UserManagement {
                             [1] Search Bar
                             [2] Customer Service Agent   
                             [3] Sell my vehicule
-                            [4] Exit
+                            [4] Display Inventory
+                            [5] Exit
                             
                            
                             ===================================================""");
@@ -35,6 +39,7 @@ public class UserManagement {
         return optionEntered;
         
     }
+
     
     
 }
