@@ -4,8 +4,7 @@ package forthelow;
 import java.util.ArrayList;
 
 abstract public class  Cars {
-    
-      private double price;
+     private double price;
     private String brand;
     private Dealership dealer;
     private String color;
@@ -147,7 +146,7 @@ abstract public class  Cars {
 
     @Override
     public String toString() {
-        return   "price=" + price + ", brand=" + brand + ", color=" + color + ", model=" + model + ", mileage=" + mileage + "}";
+        return   "price: " + price + ", brand:" + brand + ", color:" + color + ", model:" + model + ", mileage:" + mileage + "}";
     }
 
 }
