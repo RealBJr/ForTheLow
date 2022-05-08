@@ -9,40 +9,45 @@ import java.util.Stack;
 import java.util.TreeMap;
 
 public class CustomerServiceAgent {
+ 
     
-    private String clientsFirstName;
-    private String clientsLastName;
-    
+     private  String clientsFirstName;
+  private  String clientsLastName;
+
     public String getClientsFirstName() {
         return clientsFirstName;
     }
-    
+
     public void setClientsFirstName(String clientsFirstName) {
         this.clientsFirstName = clientsFirstName;
     }
-    
+
     public String getClientsLastName() {
         return clientsLastName;
     }
-    
+
     public void setClientsLastName(String clientsLastName) {
         this.clientsLastName = clientsLastName;
     }
-    
-    public String getName() {
+
+   
+   
+     public  String getName(){
         
         Scanner sc = new Scanner(System.in);
         
         System.out.println("what is your first name");
         clientsFirstName = sc.nextLine();
         
-        System.out.println("What is your last name");
+         System.out.println("What is your last name");
         clientsLastName = sc.nextLine();
+        
         
         return clientsFirstName + clientsLastName;
     }
-    
-    public String questions() {
+     
+     
+      public String questions(){
         
         Scanner sc = new Scanner(System.in);
         
@@ -55,11 +60,12 @@ public class CustomerServiceAgent {
         System.out.println("What mileage? \n Press 1: brand new (no mileage) \n Press 2: 100km - 50k km \n Press 3: 50k-100k km \n Press 4: 100k+ km");
         String answer3 = sc.nextLine();
         
-        String finalChoice = answer1 + answer2 + answer3;
-        return finalChoice;
+        String stringPref =  answer1 + answer2 + answer3;
+        
+        return stringPref ;
     }
     
-    public Inventory displayCarPreferences(String answerList) {
+   public Inventory displayCarPreferences(String answerList) {
         
         Inventory cars = new Inventory();
         ArrayList<Character> charsAnswerList = new ArrayList<>();
@@ -104,6 +110,7 @@ public class CustomerServiceAgent {
         
         cars.setInventory(new TreeMap<Posts, String>(recommendation));
         return cars;
+    
     }
     
     private static <K, V> K getKey(Map<K, V> map, V value) {
@@ -114,10 +121,19 @@ public class CustomerServiceAgent {
         }
         return null;
     }
-
     public static void main(String[] args) {
         CustomerServiceAgent csa = new CustomerServiceAgent();
-        csa.displayCarPreferences(csa.questions());
+      
+        csa.displayCarPreferences(csa.questions()).display();
+        
+        
+        
+        
     }
+     
+     
+     
+    
+    
     
 }
