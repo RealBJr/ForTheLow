@@ -4,6 +4,12 @@ package forthelow;
 public class Posts extends Cars implements Comparable<Posts> {
     
     private Cars carToSell;
+    
+     String type = "Posts";
+
+    public String getType() {
+        return type;
+    }
  
  private int inventoryPosition;
 int position = 0;
