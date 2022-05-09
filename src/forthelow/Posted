@@ -15,4 +15,10 @@ public class Posted extends Posts{
         super(price, brand, model, addressOfDealer, phoneNumber, color, mileage);
     }
     
+    String type  = "Posted";
+
+    public String getType() {
+        return type;
+    }
+    
 }
