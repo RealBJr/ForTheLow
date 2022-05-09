@@ -13,22 +13,38 @@ import java.util.TreeMap;
 
 public class Inventory {
 
-   Posts finalPost = null;
+   private String authorFirstName = "";
+  private  String authorLastName = "";
+  private String OwnersPhoneNumbers = "";
+  private String OwnersAdress = "";
+   private   Posts finalPost = null;
     Scanner sc1 = new Scanner(System.in);
     Scanner sc = new Scanner(System.in);
     private TreeMap<Posts, String> inventory;
     
 
    
-    public void sellMyVehicule(){
+    public String sellMyVehicule(){
+        System.out.println("What is your first name");
+        authorFirstName = sc1.nextLine();
         
-     
+        System.out.println("What is your last name?");
+        authorLastName = sc.nextLine();
+        
+        
+     double answer1 = 0;
          String tempansw = "";
          String tempAns2 = "";
          String tempAns3 = "";
+         
+        //try { 
         System.out.println("What is the price of the car?");
-        double answer1 = sc.nextDouble();
+         answer1 = sc.nextDouble();
+        //} catch(Exception e) {
         
+         
+       
+    //}
         if (answer1 < 25000 ) {
             
              tempansw = "1";
@@ -67,15 +83,15 @@ public class Inventory {
         String answer3 = sc1.nextLine();
         
         System.out.println("to what category does it belong? \n Press 1: minivan \n Press 2: sportscar \n Press 3: pick-up truck \n Press 4: luxury car \n Press 5: compact cars \n Press 6 : SUV");
-        String answer33 = sc.nextLine();
+        String answer33 = sc1.nextLine();
        
      
         
         System.out.println("What is the color of the car");
-        String answer4 = sc.nextLine();
+        String answer4 = sc1.nextLine();
        
         System.out.println("What is the mileage of the car? ");
-        int answerMileage = sc.nextInt();
+        int answerMileage = sc1.nextInt();
         
         if (answerMileage < 100) {
             tempAns2 = "1";
@@ -100,15 +116,16 @@ public class Inventory {
            String final1 = tempansw + answer33 + tempAns2;
         
         System.out.println("What is your adress");
-        String answer5 = sc1.nextLine();
+        OwnersAdress = sc1.nextLine();
         
         System.out.println("What is your phone number");
-        String answer6 = sc1.nextLine();
+       OwnersPhoneNumbers  = sc1.nextLine();
         
         
-        inventory.put(new Posted(answer1,answer2,answer3,answer5,answer6,answer4,answerMileage), final1);  // ask Junior if he wants to make a seperate Inventory for new Vehicules 
+        inventory.put(new Posted(answer1,answer2,answer3,OwnersAdress,OwnersPhoneNumbers,answer4,answerMileage), final1);  // ask Junior if he wants to make a seperate Inventory for new Vehicules 
         
         System.out.println("Your post has been added to our application!");
+        return "";
         
     }
     
@@ -143,7 +160,6 @@ public class Inventory {
     public Posts displayInventoryPositionDecision(){   // gets the Car that the person chose depending on the inventory position
             Posts psts = null;
            
-        
             System.out.println(" \n Choose the vehicule u want to take a look  depending on the inventory position: " );
             int answer = sc.nextInt();
             
@@ -152,7 +168,7 @@ public class Inventory {
         int position = 0;
         Iterator i = set.iterator();
 
-        
+      //  try {
         while (i.hasNext()) {
             
             psts = (Posts) i.next();
@@ -169,28 +185,73 @@ public class Inventory {
                 System.out.println("That car doesnt exist, plz try again");
                 finalPost = null;
                 return displayInventoryPositionDecision();
+                
             }
            
-        
         }
-        
-        
- 
+    //    }
+        //catch(Exception e) {
+            
+       //   return    displayInventoryPositionDecision();
+        //}
         return finalPost;   
         }
     
     public  void Decision() throws IOException{
        
-       
+        LocalDate localdate2 = LocalDate.now(Clock.systemUTC());
+            LocalDateTime now = LocalDateTime.now();  
      
         
         CustomerServiceAgent csa = new CustomerServiceAgent();
         csa.getName();
        Posts tempPost = finalPost;
+     
         double downPaymentAmount = (0.10 * tempPost.getPrice());
        
-       
-        System.out.println(" \n Do you want to buy the vehicule or lease it?,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n press 2 to lease \n press 3 to book appointment with dealer ");
+        if (tempPost.getType().equals("Posted")) {
+            
+             System.out.println(" \n Do you want to buy the vehicule or book an appointment with owner,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n  press 2 to book appointment with owner ");
+        
+        int answer = sc.nextInt();
+        
+        if (answer == 1) {
+          
+            System.out.println("The total for the down payment will be : " + downPaymentAmount);
+           
+            System.out.println("Enter your  9 digit card number");
+            String answer1  = sc1.nextLine();
+            
+            System.out.println("Enter the Exp date");
+             String answer2  = sc1.nextLine();
+           
+              System.out.println("Enter CVV");
+             String answer3  = sc1.nextLine();
+           
+           
+            // add file ouput as the bill
+             System.out.println("Your " + tempPost.getBrand() + "," + tempPost.getModel() + " has been reserved at " + OwnersAdress  );
+            System.out.println("The copy of your bill has been sent to your email");
+            BufferedWriter br = new BufferedWriter(new FileWriter("/Users/keethen/Documents/BillPurchase.txt"));
+            
+            br.write(" Thank you " +csa.getClientsFirstName() + csa.getClientsLastName() + " for using  ForTheLow " + "to buy your " + tempPost.getBrand() + tempPost.getModel() + " \n here is your bill " + "You payed " + authorFirstName + ", " + authorLastName + " a down payment of : " + downPaymentAmount + " on " +  java.time.LocalDate.now() + " at " + java.time.LocalTime.now());
+            
+            br.close();
+            
+        }
+        
+         if(answer == 2){
+            
+            
+            System.out.println("Here is the phone number of the Owner : "  + OwnersPhoneNumbers + " you may call him to book an appointment"  );
+            
+        }
+            
+        }
+        
+       else if (tempPost.getType().equals("Posts")) {
+            
+             System.out.println(" \n Do you want to buy the vehicule or lease it?,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n press 2 to lease \n press 3 to book appointment with dealer ");
         
         int answer = sc.nextInt();
         
@@ -211,16 +272,14 @@ public class Inventory {
             System.out.println("Your " + tempPost.getBrand() + "," + tempPost.getModel() + " has been reserved at " +  tempPost.getAddressOfDealer() );
             
             
-       //     this.inventory.remove(tempPost);
-           
-       //    finalMap.putAll(this.inventory);
-            
+            System.out.println("The bill has been sent to your email");
+        
             
             // add file ouput as the bill
             
             BufferedWriter br = new BufferedWriter(new FileWriter("/Users/keethen/Documents/BillPurchase.txt"));
             
-            br.write("Thank you " +csa.getClientsFirstName() + csa.getClientsLastName() + "for shopping with ForTheLow " + " \n here is your bill " + "You payed " + downPaymentAmount);
+            br.write(" Thank you " +csa.getClientsFirstName() + csa.getClientsLastName() + " for shopping with ForTheLow " + " \n here is your bill " + "You payed " + downPaymentAmount + " on " + java.time.LocalDate.now() + " at " + java.time.LocalTime.now() );
             br.close();
             
             
@@ -229,7 +288,7 @@ public class Inventory {
         if (answer== 2) {
             
             
-            System.out.println("For how long do you want to lease it");
+            System.out.println("For how many years do you want to lease it");
             
             
             int answer2 = sc.nextInt();
@@ -238,11 +297,11 @@ public class Inventory {
             System.out.println("Your details have been sent to the dealership at" + tempPost.getAddressOfDealer());
             
             
-            System.out.println("Your copy of the appointment has been sent to you!");
+            System.out.println("Your copy of the appointment has been sent to your email!");
             
             BufferedWriter br = new BufferedWriter(new FileWriter("/Users/keethen/Documents/LeasePurchase.txt"));
             
-            br.write("Thank you " +csa.getClientsFirstName() + "," +csa.getClientsLastName() + "for dealing with ForTheLow " + " The dealership at " + tempPost.getAddressOfDealer() + "will get back to you");
+            br.write("Thank you " +csa.getClientsFirstName() + "," +csa.getClientsLastName() + " for dealing with ForTheLow " + " The dealership at " + tempPost.getAddressOfDealer() + " will get back to you soon");
             br.close();
             
             
@@ -262,6 +321,10 @@ public class Inventory {
           
         }
         
+           
+        }
+       
+      
         
         
         
@@ -300,7 +363,7 @@ public class Inventory {
         inventory.put(new Posts(138910.0, "Nissan", "GTR premium 2018","3500 Rue Jean-Talon O, Montréal, QC H3R 2E8", " (514) 509-7777" ,"yellow" , 52371 ), "523");
         inventory.put(new Posts(24888.0, "Subaru", "Forester Touring 2017", " 4900 Pare St, Montreal, Quebec H4P 1P3", " (514) 737-1880" , "orange" ,49324 ), "162");
         inventory.put(new Posts(45800.0, "Mercedes-Benz"," S-Class S550 2015" , "7800 Decarie Blvd, Montreal, Quebec H4P 2H4" , "(514) 359-7171", "black", 149179), "244");
-
+        inventory.put(new Posts(76888.00, "Maserati" , "Levante Q4S 2018", "  8525 Decarie Blvd, Mount Royal, Quebec H4P 2J2", "(514) 738-3030", "white", 1500), "462");
         
     }
     
@@ -308,6 +371,7 @@ public class Inventory {
         
          this.inventory = new TreeMap<>(com);
     }
+
 
     
 }
