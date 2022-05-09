@@ -13,13 +13,14 @@ import java.util.TreeMap;
 
 public class Inventory {
 
-   private String authorFirstName = "";
+ private String authorFirstName = "";
   private  String authorLastName = "";
   private String OwnersPhoneNumbers = "";
   private String OwnersAdress = "";
    private   Posts finalPost = null;
     Scanner sc1 = new Scanner(System.in);
     Scanner sc = new Scanner(System.in);
+     Scanner sc2 = new Scanner(System.in);
     private TreeMap<Posts, String> inventory;
     
 
@@ -27,23 +28,29 @@ public class Inventory {
     public String sellMyVehicule(){
         System.out.println("What is your first name");
         authorFirstName = sc1.nextLine();
+      
+        sc1.nextLine();
         
         System.out.println("What is your last name?");
         authorLastName = sc.nextLine();
         
+          sc.nextLine();
         
+        int answerMileage = 0;
      double answer1 = 0;
          String tempansw = "";
          String tempAns2 = "";
          String tempAns3 = "";
          
-        //try { 
-        System.out.println("What is the price of the car?");
+       
+         
+         
+         
+              System.out.println("What is the price of the car?");
          answer1 = sc.nextDouble();
-        //} catch(Exception e) {
-        
          
        
+        
     //}
         if (answer1 < 25000 ) {
             
@@ -71,27 +78,40 @@ public class Inventory {
             tempansw = "5";
             
         }
+        
+       
       
         
         
-        System.out.println("What is the brand of the car");
+        System.out.println("What is the brand  of the car");
         String answer2 = sc1.nextLine();
         
-        
-        
-        System.out.println("What is the model of the car " );
+        System.out.println("What is the model  and the year of the car " );
         String answer3 = sc1.nextLine();
         
         System.out.println("to what category does it belong? \n Press 1: minivan \n Press 2: sportscar \n Press 3: pick-up truck \n Press 4: luxury car \n Press 5: compact cars \n Press 6 : SUV");
         String answer33 = sc1.nextLine();
        
+        
+         
+        
      
         
         System.out.println("What is the color of the car");
         String answer4 = sc1.nextLine();
        
-        System.out.println("What is the mileage of the car? ");
-        int answerMileage = sc1.nextInt();
+       
+        
+            
+              System.out.println("What is the mileage of the car? ");
+        answerMileage = sc1.nextInt();
+        
+        
+            
+        
+        
+      
+        
         
         if (answerMileage < 100) {
             tempAns2 = "1";
@@ -113,10 +133,14 @@ public class Inventory {
             
         }
         
+        
            String final1 = tempansw + answer33 + tempAns2;
         
+           
         System.out.println("What is your adress");
         OwnersAdress = sc1.nextLine();
+        
+        sc1.nextLine();
         
         System.out.println("What is your phone number");
        OwnersPhoneNumbers  = sc1.nextLine();
@@ -219,7 +243,7 @@ public class Inventory {
           
             System.out.println("The total for the down payment will be : " + downPaymentAmount);
            
-            System.out.println("Enter your  9 digit card number");
+            System.out.println("Enter your  16 digit card number");
             String answer1  = sc1.nextLine();
             
             System.out.println("Enter the Exp date");
@@ -371,6 +395,7 @@ public class Inventory {
         
          this.inventory = new TreeMap<>(com);
     }
+
 
 
     
