@@ -158,10 +158,12 @@ abstract public class Cars {
         this.keywords = keywords;
     }
 
-    @Override
+      @Override
     public String toString() {
-        return "price: " + price + ", brand:" + brand + ", color:" + color + ", model:" + model + ", mileage:" + mileage + "}";
+        return 
+                "price: " + price + ", brand:" + brand + ", color:" + color + ", model:" + model + ", mileage:" + mileage + "km" + "}";
     }
+
 
 }
 
