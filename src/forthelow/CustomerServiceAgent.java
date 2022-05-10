@@ -1,175 +1,208 @@
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package forthelow;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
 
-/**
- *
- * @author 2177095
- */
-public class Cars {
+class CustomerServiceAgent {
 
-    private double price;
-    private String brand;
-    private Dealership dealer;
-    private String color;
-    private int lifestyle, salary, colorPreference = 0;
-    private String model;
-    private int mileage;
-    private ArrayList<String> keywords;
-    private String setOfNbrs;
-    private String addressOfDealer;
-    private String phoneNumber;
+    private String clientsFirstName;
+    private String clientsLastName;
 
-    public Cars(double price, String brand, String model, String addressOfDealer, String phoneNumber, String color, int mileage) {
-        this.price = price;
-        this.model = model;
-        this.mileage = mileage;
-        this.brand = brand;
-        this.phoneNumber = phoneNumber;
-        this.addressOfDealer = addressOfDealer;
-        this.dealer = dealer;
-        this.color = color;
-        this.keywords = new ArrayList<>();
-        this.keywords.addAll(toKeywords(color));
-        this.keywords.addAll(toKeywords(brand));
-        this.keywords.addAll(toKeywords(model));
-        this.keywords.addAll(toKeywords(addressOfDealer));
-        this.keywords.addAll(toKeywords(String.valueOf(mileage)));
-
+    public String getClientsFirstName() {
+        return clientsFirstName;
     }
 
-    private static ArrayList<String> toKeywords(String word) {
+    public void setClientsFirstName(String clientsFirstName) {
+        this.clientsFirstName = clientsFirstName;
+    }
 
-        ArrayList<String> toKeywords = new ArrayList<>();
-        int i = 0;
+    public String getClientsLastName() {
+        return clientsLastName;
+    }
 
-        for (i = 0; i < word.length(); i++) {
-            if (word.charAt(i) == ' ') {
-                toKeywords.add(word.substring(0, i).toLowerCase());
-                word = word.substring(i + 1);
-                i = -1;
-            } else if (i == word.length() - 1) {
-                toKeywords.add(word.toLowerCase());
+    public void setClientsLastName(String clientsLastName) {
+        this.clientsLastName = clientsLastName;
+    }
+
+    public String getName() {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("what is your first name");
+        clientsFirstName = sc.nextLine();
+
+        System.out.println("What is your last name");
+        clientsLastName = sc.nextLine();
+
+        return clientsFirstName + clientsLastName;
+    }
+
+    public String questions() {
+
+        Scanner sc = new Scanner(System.in);
+        String stringPref = "";
+        try {
+            System.out.println("What is your income? \n Press 1: <25K \n Press 2: 25K - 50K annually \n Press 3: 50K -75K annually \n Press 4: 75K - 100K annually \n Press 5: 100K and above");
+            int answer01 = sc.nextInt();
+
+            ////    String answer1 =   String.valueOf(question1());    // sc.nextLine();
+            System.out.println("Do you have a preferred car model? \n Press 1: minivan \n Press 2: sportscar \n Press 3: pick-up truck \n Press 4: luxury car \n Press 5: compact cars \n Press 6 : SUV");
+            int answer02 = sc.nextInt();
+            ////   String answer2 = String.valueOf(question2());
+
+            System.out.println("What mileage? \n Press 1: brand new (no mileage) \n Press 2: 100km - 50k km \n Press 3: 50k-100k km \n Press 4: 100k+ km");
+            int answer03 = sc.nextInt();
+            ////  String answer3 = String.valueOf(question3());
+
+            stringPref = stringPref + answer01 + answer02 + answer03;
+
+        } catch (Exception e) {
+            System.out.println("Try again!");
+            return questions();
+        }
+        return stringPref;
+    }
+
+    public int question1() {
+
+        Scanner sc = new Scanner(System.in);
+
+        int answer01 = 0;
+
+        try {
+            System.out.println("What is your income? \n Press 1: <25K \n Press 2: 25K - 50K annually \n Press 3: 50K -75K annually \n Press 4: 75K - 100K annually \n Press 5: 100K and above");
+            answer01 = sc.nextInt();
+
+            if (answer01 <= 0 || answer01 > 5) {
+
+                System.out.println("Enter an answer between 1 and 5 plz");
+
+                return question1();
             }
+
+        } catch (Exception e) {
+            System.out.println("Enter the proper input");
+            return question1();
 
         }
 
-        return toKeywords;
+        return answer01;
+
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public int question2() {
+        Scanner sc = new Scanner(System.in);
+
+        int answer02 = 0;
+        try {
+
+            System.out.println("Do you have a preferred car model? \n Press 1: minivan \n Press 2: sportscar \n Press 3: pick-up truck \n Press 4: luxury car \n Press 5: compact cars \n Press 6 : SUV");
+            answer02 = sc.nextInt();
+
+            if (answer02 <= 0 || answer02 > 6) {
+
+                System.out.println("Enter an answer between 1 and 6 plz");
+
+                return question2();
+            }
+
+        } catch (Exception e) {
+
+            System.out.println("Enter the proper input");
+            return question2();
+
+        }
+
+        return answer02;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public int question3() {
+        Scanner sc = new Scanner(System.in);
+
+        int answer03 = 0;
+
+        try {
+
+            System.out.println("What mileage? \n Press 1: brand new (no mileage) \n Press 2: 100km - 50k km \n Press 3: 50k-100k km \n Press 4: 100k+ km");
+            answer03 = sc.nextInt();
+
+            if (answer03 <= 0 || answer03 > 4) {
+
+                System.out.println("Enter an answer between 1 and 4 plz");
+
+                return question3();
+            }
+
+        } catch (Exception e) {
+
+            System.out.println("Enter the proper input");
+            return question3();
+
+        }
+
+        return answer03;
     }
 
-    public String getAddressOfDealer() {
-        return addressOfDealer;
+    public Inventory displayCarPreferences(String answerList) {
+
+        Inventory cars = new Inventory();
+        ArrayList<Character> charsAnswerList = new ArrayList<>();
+        int repeated = 0;
+        //pushing each chars in the arrayList of charsAnswerList
+        for (int i = 0; i < answerList.length(); i++) {
+            charsAnswerList.add(answerList.charAt(i));
+        }
+
+        //compare 1st chars in values of post with arrayList objects()
+        Collection<String> values = cars.getInventory().values();
+
+        //creating a List of values that i would easily manipulate
+        List<String> valuesAsList = new ArrayList();
+        valuesAsList.addAll(values);
+
+        int maxRepeated = 0;
+        TreeMap<Posts, String> recommendation = new TreeMap<>();
+        for (int i = 1; i < valuesAsList.size(); i++) {
+            if (charsAnswerList.get(0).equals(valuesAsList.get(i).charAt(0))) {
+                String singleValue = valuesAsList.get(i);
+                // nbr of times there are common nbrs
+                for (int j = 1; j < singleValue.length(); j++) {
+                    if (singleValue.charAt(j) == charsAnswerList.get(j)) {
+                        repeated++;
+                    }
+                }
+
+                if (repeated > maxRepeated) {
+                    maxRepeated = repeated;
+                    recommendation.put(getKey(cars.getInventory(), valuesAsList.get(i)), valuesAsList.get(i));
+                }
+                if (repeated == maxRepeated) {
+                    recommendation.put(getKey(cars.getInventory(), valuesAsList.get(i)), valuesAsList.get(i));
+                }
+
+            }
+        }
+        if (repeated == 0) {
+            System.out.println("Did not find any  good match according to ur preferences so we displayed what fits ur budget");
+        }
+
+        cars.setInventoryCopy(new TreeMap<Posts, String>(recommendation));
+        return cars;
+
     }
 
-    public void setAddressOfDealer(String addressOfDealer) {
-        this.addressOfDealer = addressOfDealer;
-    }
-
-    public String getSetOfNbrs() {
-        return setOfNbrs;
-    }
-
-    public void setSetOfNbrs(String setOfNbrs) {
-        this.setOfNbrs = setOfNbrs;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public Dealership getDealer() {
-        return dealer;
-    }
-
-    public void setDealer(Dealership dealer) {
-        this.dealer = dealer;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public int getLifestyle() {
-        return lifestyle;
-    }
-
-    public void setLifestyle(int lifestyle) {
-        this.lifestyle = lifestyle;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    public int getColorPreference() {
-        return colorPreference;
-    }
-
-    public void setColorPreference(int colorPreference) {
-        this.colorPreference = colorPreference;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public int getMileage() {
-        return mileage;
-    }
-
-    public void setMileage(int mileage) {
-        this.mileage = mileage;
-    }
-
-    public ArrayList<String> getKeywords() {
-        return keywords;
-    }
-
-    public void setKeywords(ArrayList<String> keywords) {
-        this.keywords = keywords;
-    }
-
-    @Override
-    public String toString() {
-        return "price: " + price + ", brand:" + brand + ", color:" + color + ", model:" + model + ", mileage:" + mileage + "km" + "}";
+    private static <K, V> K getKey(Map<K, V> map, V value) {
+        for (K key : map.keySet()) {
+            if (value.equals(map.get(key))) {
+                return key;
+            }
+        }
+        return null;
     }
 
 }
