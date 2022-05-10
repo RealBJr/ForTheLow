@@ -14,51 +14,56 @@ import java.util.TreeMap;
 
 public class Inventory {
 
-    /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package javaapplication1;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.Clock;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.TreeMap;
-
-/**
- * sp
- *
- * @author 2177095
- */
-class Inventory {
-
     private String authorFirstName = "";
     private String authorLastName = "";
     private String OwnersPhoneNumbers = "";
     private String OwnersAdress = "";
     private Posts finalPost = null;
 
-    private static TreeMap<Posts, String> inventory;
+    private static TreeMap<Posts, String> inventory = new TreeMap<>() {
+        {
+            put(new Posts(55000.0, "BMW", "Series 4 2017", "2000 Transcanadienne Su Dorval QC H9P 2N4 ", "(514) 683-2000", "red", 52000), "323");
+            put(new Posts(25000.0, "Toyota", "Sienna 2021", "3333 Chem. de la Côte-de-Liesse, Saint-Laurent, QC H4N 3C2 ", " (514) 748-7777", "blue", 15000), "112");
+            put(new Posts(10000.0, "Honda", "Civic 2010 ", "12435 Blvd. Laurentien, Montreal, Quebec H4K 2J2", "(514) 337-2330", "white", 101000), "154");
+            put(new Posts(51000.0, "Ford", "F-150 2019 ", "7100 Rue Saint-Jacques, Montreal, QC H4B 1V2", ": (514) 487-7777", "white", 100451), "334");
+            put(new Posts(390000.0, "RollsRoyce", "Wraith 2017", "8525 Decarie Blvd, Montreal, Quebec H4P 2J2", "(514) 738-3030", "black", 4096), "542");
+            put(new Posts(55000.0, "Mitsubishi", "Outlander 2022", "2465 Bd du Curé-Labelle, Laval, QC H7T 1R3", "+1 833-960-1658", "brown", 35000), "362");
+            put(new Posts(13590.0, "Kia", "Forte Ex 2014", "2250 Bd Crémazie O, Montréal, QC H2P 1C6", "(514) 695-7777", "brown", 101834), "154");
+            put(new Posts(59654.0, "Acura", "Rdx 2021", "4040 Rue Jean-Talon O, Montréal, QC H4P 1V5", "(514) 340-1344", "black", 11650), "362");
+            put(new Posts(169800.0, "Audi", "RS 7 2021", "5805 Trans Canada Route, Saint-Laurent, Quebec H4T 1A1", " (514) 364-7777", "Grey", 10), "521");
+            put(new Posts(138910.0, "Nissan", "GTR premium 2018", "3500 Rue Jean-Talon O, Montréal, QC H3R 2E8", " (514) 509-7777", "yellow", 52371), "523");
+            put(new Posts(24888.0, "Subaru", "Forester Touring 2017", " 4900 Pare St, Montreal, Quebec H4P 1P3", " (514) 737-1880", "orange", 49324), "162");
+            put(new Posts(45800.0, "Mercedes-Benz", " S-Class S550 2015", "7800 Decarie Blvd, Montreal, Quebec H4P 2H4", "(514) 359-7171", "black", 149179), "244");
+            put(new Posts(76888.00, "Maserati", "Levante Q4S 2018", "  8525 Decarie Blvd, Mount Royal, Quebec H4P 2J2", "(514) 738-3030", "white", 1500), "462");
+
+        }
+    };
+
+    public Inventory() {
+        Inventory.inventory.putAll(posteds);
+        this.inventoryCopy = inventory;
+
+    }
+    public Inventory(Comparator com) {
+
+        this.inventoryCopy = new TreeMap<>(com);
+        
+    }
 
     private TreeMap<Posts, String> inventoryCopy;
 
     public static TreeMap<Posts, String> posteds = new TreeMap<Posts, String>();
 
-    public static TreeMap<Posts, String> tempRemoves = new TreeMap<Posts, String>();
+    public TreeMap<Posts, String> getInventory() {
+        return Inventory.inventory;
+    }
+
+    public void setInventory(TreeMap<Posts, String> inventory) {
+        Inventory.inventory = inventory;
+    }
 
     public TreeMap<Posts, String> getInventoryCopy() {
-        return inventoryCopy;
+        return this.inventoryCopy;
     }
 
     public void setInventoryCopy(TreeMap<Posts, String> inventoryCopy) {
@@ -239,7 +244,24 @@ class Inventory {
 
     }
 
-    public void display() {
+    public void displayFullInv() {
+
+        Set set = this.inventory.keySet();
+        int position = 0;
+        Iterator i = set.iterator();
+
+        while (i.hasNext()) {
+            Posts psts = (Posts) i.next();
+
+            psts.setInventoryPosition(position++);
+
+            System.out.println("inventory position" + ": " + psts.getInventoryPosition() + ", " + psts);
+
+        }
+
+    }
+
+    public void displayCopy() {
 
         Set set = this.inventoryCopy.keySet();
         int position = 0;
@@ -250,7 +272,7 @@ class Inventory {
 
             psts.setInventoryPosition(position++);
 
-            System.out.println("inventory position" + ":" + psts.getInventoryPosition() + "," + psts);
+            System.out.println("inventory position" + ": " + psts.getInventoryPosition() + ", " + psts);
 
         }
 
@@ -271,6 +293,7 @@ class Inventory {
         }
 
         Set set = inventoryCopy.keySet();
+
         int position = 0;
         Iterator i = set.iterator();
 
@@ -289,19 +312,17 @@ class Inventory {
                 System.out.println("That car doesnt exist, plz try again");
                 finalPost = null;
                 return displayInventoryPositionDecision();
-
             }
 
         }
         System.out.println(finalPost);
         return finalPost;
     }
-
+    
     public void Decision() throws IOException {
 
-        Scanner sc1 = new Scanner(System.in);
-        Scanner sc2 = new Scanner(System.in);
-
+//        Scanner sc1 = new Scanner(System.in);
+//        Scanner sc2 = new Scanner(System.in);
         CustomerServiceAgent csa = new CustomerServiceAgent();
         // if (csa.getClientsFirstName() != null && csa.getClientsLastName() != null) {
         csa.getName();
@@ -313,12 +334,14 @@ class Inventory {
 
         if (tempPost.getType().equals("Posted")) {
 
+            Scanner sc1 = new Scanner(System.in);
+
             System.out.println(" \n Do you want to buy the vehicule or book an appointment with owner,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n  press 2 to book appointment with owner \n press 3 to return to main menu ");
 
             int answer = sc1.nextInt();
 
             if (answer == 1) {
-
+                Scanner sc2 = new Scanner(System.in);
                 System.out.println("The total for the down payment will be : " + downPaymentAmount);
 
                 System.out.println("Enter your  16 digit card number");
@@ -332,98 +355,94 @@ class Inventory {
 
                 // add file ouput as the bill
                 System.out.println("Your " + tempPost.getBrand() + "," + tempPost.getModel() + " has been reserved at " + OwnersAdress);
-                System.out.println("The copy of your bill has been sent to your email");
-                BufferedWriter br = new BufferedWriter(new FileWriter("/Users/keethen/Documents/BillPurchase.txt"));
+                System.out.println("The copy of your bill has been sent to your repository");
+                BufferedWriter br = new BufferedWriter(new FileWriter("Bill"));
 
                 br.write(" Thank you " + csa.getClientsFirstName() + csa.getClientsLastName() + " for using  ForTheLow " + "to buy your " + tempPost.getBrand() + tempPost.getModel() + " \n here is your bill " + "You payed " + authorFirstName + ", " + authorLastName + " a down payment of : " + downPaymentAmount + " on " + java.time.LocalDate.now() + " at " + java.time.LocalTime.now());
 
                 br.close();
-           
- inventory.remove(tempPost);
-                         inventoryCopy.remove(tempPost);
-            
+
+                Inventory.inventory.remove(tempPost);
+                inventoryCopy.remove(tempPost);
             }
 
             if (answer == 2) {
 
                 System.out.println("Here is the phone number of the Owner : " + OwnersPhoneNumbers + " you may call him to book an appointment");
-             
-              inventory.remove(tempPost);
-                         inventoryCopy.remove(tempPost);
+
+                inventory.remove(tempPost);
+                inventoryCopy.remove(tempPost);
             }
 
         } else if (tempPost.getType().equals("Posts")) {
+            Scanner sc1 = new Scanner(System.in);
+
             int answer = 0;
 
             try {
-                System.out.println(" \n Do you want to buy the vehicule or lease it?,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n press 2 to lease \n press 3 to book appointment with dealer \n press 4 to return to main menu ");
-
-                answer = sc1.nextInt();
+                answer = questionPosts();
 
             } catch (Exception e) {
-                Scanner sc21 = new Scanner(System.in);
-                answer = sc21.nextInt();
-                //   answer = questionPosts();
+                answer = questionPosts();
 
             }
 
             if (answer == 1) {
-                Scanner sc11 = new Scanner(System.in);
+                Scanner sc2 = new Scanner(System.in);
 
                 System.out.println("The total for the down payment will be : " + downPaymentAmount);
 
                 System.out.println("Enter your  9 digit card number");
-                String answer1 = sc11.nextLine();
+                String answer1 = sc2.nextLine();
 
                 System.out.println("Enter the Exp date");
-                String answer2 = sc11.nextLine();
+                String answer2 = sc2.nextLine();
 
                 System.out.println("Enter CVV");
-                String answer3 = sc11.nextLine();
+                String answer3 = sc2.nextLine();
 
-                System.out.println("Your " + tempPost.getBrand() + "," + tempPost.getModel() + " has been reserved at " + tempPost.getAddressOfDealer());
+                System.out.println("Your " + tempPost.getBrand() + ", " + tempPost.getModel() + " has been reserved at " + tempPost.getAddressOfDealer());
 
-                System.out.println("The bill has been sent to your email");
+                System.out.println("The bill has been sent to your repository");
 
                 // add file ouput as the bill
-                BufferedWriter br = new BufferedWriter(new FileWriter("/Users/keethen/Documents/BillPurchase.txt"));
+                BufferedWriter br = new BufferedWriter(new FileWriter("Bill"));
 
                 br.write(" Thank you " + csa.getClientsFirstName() + csa.getClientsLastName() + " for shopping with ForTheLow " + " \n here is your bill " + "You payed " + downPaymentAmount + " on " + java.time.LocalDate.now() + " at " + java.time.LocalTime.now());
                 br.close();
 
-            //    tempRemoves.put(tempPost, tempPost.getSetOfNbrs());
-                inventory.remove(tempPost);
-                         inventoryCopy.remove(tempPost);
-            
+                //    tempRemoves.put(tempPost, tempPost.getSetOfNbrs());
+                Inventory.inventory.remove(tempPost);
+                inventoryCopy.remove(tempPost);
             }
 
             if (answer == 2) {
-
+                Scanner sc3 = new Scanner(System.in);
                 System.out.println("For how many years do you want to lease it");
 
-                int answer2 = sc1.nextInt();
+                int answer2 = sc3.nextInt();
 
                 System.out.println("Your details have been sent to the dealership at" + tempPost.getAddressOfDealer());
 
-                System.out.println("Your copy of the appointment has been sent to your email!");
+                System.out.println("Your copy of the appointment has been sent to your repository!");
 
-                BufferedWriter br = new BufferedWriter(new FileWriter("/Users/keethen/Documents/LeasePurchase.txt"));
+                BufferedWriter br = new BufferedWriter(new FileWriter("Appointment"));
 
-                br.write("Thank you " + csa.getClientsFirstName() + "," + csa.getClientsLastName() + " for dealing with ForTheLow " + " The dealership at " + tempPost.getAddressOfDealer() + " will get back to you soon");
+                br.write("Thank you " + csa.getClientsFirstName() + ", " + csa.getClientsLastName() + " for dealing with ForTheLow " + " The dealership at " + tempPost.getAddressOfDealer() + " will get back to you soon");
                 br.close();
-             //   tempRemoves.put(tempPost, tempPost.getSetOfNbrs());
-             
-              inventory.remove(tempPost);
-                         inventoryCopy.remove(tempPost);
+                //   tempRemoves.put(tempPost, tempPost.getSetOfNbrs());
+
+                inventory.remove(tempPost);
+                inventoryCopy.remove(tempPost);
             }
 
             if (answer == 3) {
 
                 System.out.println("Here is the adress of the dealership : " + tempPost.getAddressOfDealer() + " \n Here is the phone number : " + tempPost.getPhoneNumber());
-            //    tempRemoves.put(tempPost, tempPost.getSetOfNbrs());
-            
-             inventory.remove(tempPost);
-                         inventoryCopy.remove(tempPost);
+                //    tempRemoves.put(tempPost, tempPost.getSetOfNbrs());
+
+                inventory.remove(tempPost);
+                inventoryCopy.remove(tempPost);
             }
 
         }
@@ -466,54 +485,11 @@ class Inventory {
         return 0;
     }
 
-    public TreeMap<Posts, String> getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(TreeMap<Posts, String> inventory) {
-        this.inventory = inventory;
-    }
-
-    
-
-    public Inventory() {
-
-        this.inventory = new TreeMap<>();
-        inventory.put(new Posts(55000.0, "BMW", "Series 4 2017", "2000 Transcanadienne Su Dorval QC H9P 2N4 ", "(514) 683-2000", "red", 52000), "323");
-        inventory.put(new Posts(25000.0, "Toyota", "Sienna 2021", "3333 Chem. de la Côte-de-Liesse, Saint-Laurent, QC H4N 3C2 ", " (514) 748-7777", "blue", 15000), "112");
-        inventory.put(new Posts(10000.0, "Honda", "Civic 2010 ", "12435 Blvd. Laurentien, Montreal, Quebec H4K 2J2", "(514) 337-2330", "white", 101000), "154");
-        inventory.put(new Posts(51000.0, "Ford", "F-150 2019 ", "7100 Rue Saint-Jacques, Montreal, QC H4B 1V2", ": (514) 487-7777", "white", 100451), "334");
-        inventory.put(new Posts(390000.0, "RollsRoyce", "Wraith 2017", "8525 Decarie Blvd, Montreal, Quebec H4P 2J2", "(514) 738-3030", "black", 4096), "542");
-        inventory.put(new Posts(55000.0, "Mitsubishi", "Outlander 2022", "2465 Bd du Curé-Labelle, Laval, QC H7T 1R3", "+1 833-960-1658", "brown", 35000), "362");
-        inventory.put(new Posts(13590.0, "Kia", "Forte Ex 2014", "2250 Bd Crémazie O, Montréal, QC H2P 1C6", "(514) 695-7777", "brown", 101834), "154");
-        inventory.put(new Posts(59654.0, "Acura", "Rdx 2021", "4040 Rue Jean-Talon O, Montréal, QC H4P 1V5", "(514) 340-1344", "black", 11650), "362");
-        inventory.put(new Posts(169800.0, "Audi", "RS 7 2021", "5805 Trans Canada Route, Saint-Laurent, Quebec H4T 1A1", " (514) 364-7777", "Grey", 10), "521");
-        inventory.put(new Posts(138910.0, "Nissan", "GTR premium 2018", "3500 Rue Jean-Talon O, Montréal, QC H3R 2E8", " (514) 509-7777", "yellow", 52371), "523");
-        inventory.put(new Posts(24888.0, "Subaru", "Forester Touring 2017", " 4900 Pare St, Montreal, Quebec H4P 1P3", " (514) 737-1880", "orange", 49324), "162");
-        inventory.put(new Posts(45800.0, "Mercedes-Benz", " S-Class S550 2015", "7800 Decarie Blvd, Montreal, Quebec H4P 2H4", "(514) 359-7171", "black", 149179), "244");
-        inventory.put(new Posts(76888.00, "Maserati", "Levante Q4S 2018", "  8525 Decarie Blvd, Mount Royal, Quebec H4P 2J2", "(514) 738-3030", "white", 1500), "462");
-        inventory.putAll(posteds);
-       
-   
-       
-        this.inventoryCopy = inventory;
-
-    }
-
     public static TreeMap<Posts, String> posted(Posts p, String value) {
         posteds = new TreeMap<Posts, String>();
         posteds.put(p, value);
 
         return posteds;
     }
-
-    public Inventory(Comparator com) {
-
-        this.inventory = new TreeMap<>(com);
-        this.inventoryCopy = inventory;
-    }
-
-}
-
 
 }
