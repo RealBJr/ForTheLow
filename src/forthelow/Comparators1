@@ -1,14 +1,11 @@
 public class Comparators1 implements Comparator<Posts> {
 
     
-  public Posted(double price, String brand, String model, String addressOfDealer, String phoneNumber, String color, int mileage) {
-        super(price, brand, model, addressOfDealer, phoneNumber, color, mileage);
-    }
-    
-    String type  = "Posted";
+ public int compare(Posts o1, Posts o2) {
+   
+return   (int) (o1.getPrice() - o2.getPrice());
 
-    public String getType() {
-        return this.type;
+//To change body of generated methods, choose Tools | Templates.
     }
     
     
