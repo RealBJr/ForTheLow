@@ -159,7 +159,7 @@ public class Inventory {
         System.out.println(" \n Choose the vehicule u want to take a look  depending on the inventory position: ");
         int answer = sc.nextInt();
 
-        Set set = inventory.keySet();
+        Set set = inventoryCopy.keySet();
         int position = 0;
         Iterator i = set.iterator();
 
