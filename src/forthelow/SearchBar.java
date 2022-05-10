@@ -9,7 +9,8 @@ import java.util.stream.Collectors;
 
 public class SearchBar {
 
-    public Inventory search(String search, Comparator com) {
+  public Inventory search(String search, Comparator com) {
+
         Inventory result = new Inventory(com);
 
         for (int i = 0; i < search.length(); i++) {
