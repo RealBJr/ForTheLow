@@ -4,16 +4,14 @@ package forthelow;
 public class Posts extends Cars implements Comparable<Posts> {
     
     private Cars carToSell;
-    
-     String type = "Posts";
+
+    private int inventoryPosition;
+    private int position = 0;
+    String type = "Posts";
 
     public String getType() {
         return type;
     }
- 
- private int inventoryPosition;
-int position = 0;
-   
 
     public int getInventoryPosition() {
         return inventoryPosition;
@@ -22,32 +20,33 @@ int position = 0;
     public void setInventoryPosition(int inventoryPosition) {
         this.inventoryPosition = inventoryPosition;
     }
-    
-    
+
     private String author;
 
-    public Posts( double price, String brand, String model, String addressOfDealer,String phoneNumber ,String color, int mileage) {
-        super(price, brand, model, addressOfDealer,phoneNumber ,color, mileage);
+    public Posts(double price, String brand, String model, String addressOfDealer, String phoneNumber, String color, int mileage) {
+        super(price, brand, model, addressOfDealer, phoneNumber, color, mileage);
         this.carToSell = carToSell;
         this.author = author;
-   
+
     }
-    
-   
-    public void buy(){
+
+    public void buy() {
     }
-    public void bookAnAppointment(){
+
+    public void bookAnAppointment() {
     }
 
     @Override
     public int compareTo(Posts o) {
-       
-       
-        
-        return this.getBrand().compareTo(o.getBrand());
+
+        int value = this.getBrand().compareTo(o.getBrand());
+        if (!this.getKeywords().equals(o.getKeywords())) {
+            value = 1;
+        }
+
+        return value;
 
 //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }
