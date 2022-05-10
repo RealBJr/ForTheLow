@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -35,7 +34,7 @@ public class Cars {
         this.addressOfDealer = addressOfDealer;
         this.dealer = dealer;
         this.color = color;
-        this.keywords = new ArrayList<String>();
+        this.keywords = new ArrayList<>();
         this.keywords.addAll(toKeywords(color));
         this.keywords.addAll(toKeywords(brand));
         this.keywords.addAll(toKeywords(model));
@@ -55,7 +54,7 @@ public class Cars {
                 word = word.substring(i + 1);
                 i = -1;
             } else if (i == word.length() - 1) {
-                toKeywords.add(word);
+                toKeywords.add(word.toLowerCase());
             }
 
         }
@@ -171,5 +170,6 @@ public class Cars {
     public String toString() {
         return "price: " + price + ", brand:" + brand + ", color:" + color + ", model:" + model + ", mileage:" + mileage + "km" + "}";
     }
-
+    
+   
 }
