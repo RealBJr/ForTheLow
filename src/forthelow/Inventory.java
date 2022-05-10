@@ -1,4 +1,9 @@
-package forthelow;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -6,13 +11,21 @@ import java.io.IOException;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 
-public class Inventory {
+/**
+ * sp
+ *
+ * @author 2177095
+ */
+class Inventory {
 
     private String authorFirstName = "";
     private String authorLastName = "";
@@ -44,10 +57,11 @@ public class Inventory {
         this.inventoryCopy = inventory;
 
     }
+
     public Inventory(Comparator com) {
 
         this.inventoryCopy = new TreeMap<>(com);
-        
+
     }
 
     private TreeMap<Posts, String> inventoryCopy;
@@ -315,18 +329,15 @@ public class Inventory {
             }
 
         }
-        System.out.println(finalPost);
+        // System.out.println(finalPost);
         return finalPost;
     }
-    
+
     public void Decision() throws IOException {
 
-//        Scanner sc1 = new Scanner(System.in);
-//        Scanner sc2 = new Scanner(System.in);
         CustomerServiceAgent csa = new CustomerServiceAgent();
-        // if (csa.getClientsFirstName() != null && csa.getClientsLastName() != null) {
+
         csa.getName();
-        //}
 
         Posts tempPost = finalPost;
 
@@ -335,10 +346,22 @@ public class Inventory {
         if (tempPost.getType().equals("Posted")) {
 
             Scanner sc1 = new Scanner(System.in);
+            int answer = 0;
+            
+            try {
+            
+                answer = questionPosted();
+                
+                
+            } catch(Exception e) {
+                
+                answer = questionPosted();
+                
+            }
+            
+           // System.out.println(" \n Do you want to buy the vehicule or book an appointment with owner,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n  press 2 to book appointment with owner \n press 3 to return to main menu ");
 
-            System.out.println(" \n Do you want to buy the vehicule or book an appointment with owner,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n  press 2 to book appointment with owner \n press 3 to return to main menu ");
-
-            int answer = sc1.nextInt();
+            //int answer = sc1.nextInt();
 
             if (answer == 1) {
                 Scanner sc2 = new Scanner(System.in);
@@ -356,7 +379,7 @@ public class Inventory {
                 // add file ouput as the bill
                 System.out.println("Your " + tempPost.getBrand() + "," + tempPost.getModel() + " has been reserved at " + OwnersAdress);
                 System.out.println("The copy of your bill has been sent to your repository");
-                BufferedWriter br = new BufferedWriter(new FileWriter("Bill"));
+                BufferedWriter br = new BufferedWriter(new FileWriter("Bill0"));
 
                 br.write(" Thank you " + csa.getClientsFirstName() + csa.getClientsLastName() + " for using  ForTheLow " + "to buy your " + tempPost.getBrand() + tempPost.getModel() + " \n here is your bill " + "You payed " + authorFirstName + ", " + authorLastName + " a down payment of : " + downPaymentAmount + " on " + java.time.LocalDate.now() + " at " + java.time.LocalTime.now());
 
@@ -478,11 +501,26 @@ public class Inventory {
     public int questionPosted() {
 
         Scanner sc1 = new Scanner(System.in);
-        System.out.println(" \n Do you want to buy the vehicule or book an appointment with owner,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n  press 2 to book appointment with owner \n press 3 to return to main menu ");
+        int answer = 0;
+        try {
 
-        int answer = sc1.nextInt();
+            System.out.println(" \n Do you want to buy the vehicule or book an appointment with owner,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n  press 2 to book appointment with owner \n press 3 to return to main menu ");
 
-        return 0;
+            answer = sc1.nextInt();
+
+            if (answer <= 0 || answer > 3) {
+                System.out.println("Enter an answer between 1 and 3 plz");
+                return questionPosted();
+
+            }
+
+        } catch (Exception e) {
+
+            System.out.println("Enter the proper Input");
+            return questionPosted();
+
+        }
+        return answer;
     }
 
     public static TreeMap<Posts, String> posted(Posts p, String value) {
