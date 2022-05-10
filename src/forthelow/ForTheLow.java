@@ -60,10 +60,10 @@ public class ForTheLow {
                             CustomerServiceAgent csa = new CustomerServiceAgent();
                             //   csa.getName();
                             String decisionChoice = csa.questions();
-                            inv = csa.displayCarPreferences(decisionChoice);
-                            inv.displayFullInv();
-                            Posts chosenPost = inv.displayInventoryPositionDecision();
-                            inv.Decision();
+                            Inventory n = csa.displayCarPreferences(decisionChoice);
+                            n.displayCopy();
+                            Posts chosenPost = n.displayInventoryPositionDecision();
+                            n.Decision();
                             //inv.getInventory().remove(chosenPost);
                             //   inv.getInventoryCopy().remove(chosenPost);
                             break;
