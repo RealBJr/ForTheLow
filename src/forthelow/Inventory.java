@@ -14,19 +14,48 @@ import java.util.TreeMap;
 
 public class Inventory {
 
+    /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.Clock;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeMap;
+
+/**
+ * sp
+ *
+ * @author 2177095
+ */
+class Inventory {
+
     private String authorFirstName = "";
     private String authorLastName = "";
     private String OwnersPhoneNumbers = "";
     private String OwnersAdress = "";
     private Posts finalPost = null;
-    Scanner sc1 = new Scanner(System.in);
-    Scanner sc = new Scanner(System.in);
-    Scanner sc2 = new Scanner(System.in);
+
     private static TreeMap<Posts, String> inventory;
-    
+
     private TreeMap<Posts, String> inventoryCopy;
-    
-    public static TreeMap<Posts, String>  posteds = new TreeMap<Posts, String>();
+
+    public static TreeMap<Posts, String> posteds = new TreeMap<Posts, String>();
+
+    public static TreeMap<Posts, String> tempRemoves = new TreeMap<Posts, String>();
 
     public TreeMap<Posts, String> getInventoryCopy() {
         return inventoryCopy;
@@ -36,27 +65,149 @@ public class Inventory {
         this.inventoryCopy = inventoryCopy;
     }
 
-    public String sellMyVehicule() {
+    public void sellMyVehicule() {
+        Scanner sc1 = new Scanner(System.in);
+
         System.out.println("What is your first name");
         authorFirstName = sc1.nextLine();
 
-        sc1.nextLine();
-
         System.out.println("What is your last name?");
-        authorLastName = sc.nextLine();
-
-        sc.nextLine();
+        authorLastName = sc1.nextLine();
 
         int answerMileage = 0;
-        double answer1 = 0;
+
         String tempansw = "";
         String tempAns2 = "";
         String tempAns3 = "";
 
-        System.out.println("What is the price of the car?");
-        answer1 = sc.nextDouble();
+        double answer1_0 = PriceOfCar();
+        tempansw = priceCarIf(answer1_0);
 
-        //}
+        System.out.println("What is the brand  of the car");
+        String answer2 = sc1.nextLine();
+
+        System.out.println("What is the model  and the year of the car ");
+        String answer3 = sc1.nextLine();
+
+        // System.out.println("to what category does it belong? \n Press 1: minivan \n Press 2: sportscar \n Press 3: pick-up truck \n Press 4: luxury car \n Press 5: compact cars \n Press 6 : SUV");
+        // String answer33 = sc1.nextLine();
+        String answer33 = String.valueOf(CatgueoryAnswer());
+
+        System.out.println("What is the color of the car");
+        String answer4 = sc1.nextLine();
+
+        answerMileage = MileageCar();
+        tempAns2 = mileageCarIf(answerMileage);
+
+        String final1 = tempansw + answer33 + tempAns2;
+
+        System.out.println("What is your adress");
+        OwnersAdress = sc1.nextLine();
+
+        System.out.println("What is your phone number");
+        OwnersPhoneNumbers = sc1.nextLine();
+
+        inventory.put(new Posted(answer1_0, answer2, answer3, OwnersAdress, OwnersPhoneNumbers, answer4, answerMileage), final1);  // ask Junior if he wants to make a seperate Inventory for new Vehicules 
+
+        System.out.println("Your post has been added to our application!");
+
+    }
+
+    public int CatgueoryAnswer() {
+        Scanner sc1 = new Scanner(System.in);
+        int answer33 = 0;
+        try {
+            System.out.println("to what category does it belong? \n Press 1: minivan \n Press 2: sportscar \n Press 3: pick-up truck \n Press 4: luxury car \n Press 5: compact cars \n Press 6 : SUV");
+
+            answer33 = sc1.nextInt();
+
+            if (answer33 <= 0 || answer33 > 6) {
+
+                System.out.println("Enter an answer between 1 and 6 plz");
+
+                return CatgueoryAnswer();
+            }
+
+        } catch (Exception e) {
+            System.out.println("Enter the proper input");
+            return CatgueoryAnswer();
+
+        }
+
+        return answer33;
+    }
+
+    public int MileageCar() {
+
+        Scanner sc22 = new Scanner(System.in);
+
+        int answerMileage = 0;
+        try {
+
+            System.out.println("What is the mileage of the car? ");
+            answerMileage = sc22.nextInt();
+
+        } catch (Exception e) {
+            System.out.println("Please enter the mileage!");
+
+            return MileageCar();
+
+        }
+
+        return answerMileage;
+
+    }
+
+    public String mileageCarIf(int answerMileage) {
+        String tempAns2 = "";
+
+        if (answerMileage < 100) {
+            tempAns2 = "1";
+
+        }
+
+        if (answerMileage >= 100 && answerMileage <= 50000) {
+
+            tempAns2 = "2";
+        }
+
+        if (answerMileage > 50000 && answerMileage <= 100000) {
+            tempAns2 = "3";
+
+        }
+
+        if (answerMileage > 100000) {
+            tempAns2 = "4";
+
+        }
+
+        return tempAns2;
+    }
+
+    public double PriceOfCar() {
+        Scanner sc22 = new Scanner(System.in);
+
+        double answer1 = 0;
+
+        try {
+            System.out.println("What is the price of the car?");
+            answer1 = sc22.nextDouble();
+
+        } catch (Exception e) {
+
+            System.out.println("Please enter a price");
+
+            return PriceOfCar();
+
+        }
+
+        return answer1;
+    }
+
+    public String priceCarIf(double answer1) {
+
+        String tempansw = "";
+
         if (answer1 < 25000) {
 
             tempansw = "1";
@@ -84,55 +235,7 @@ public class Inventory {
 
         }
 
-        System.out.println("What is the brand  of the car");
-        String answer2 = sc1.nextLine();
-
-        System.out.println("What is the model  and the year of the car ");
-        String answer3 = sc1.nextLine();
-
-        System.out.println("to what category does it belong? \n Press 1: minivan \n Press 2: sportscar \n Press 3: pick-up truck \n Press 4: luxury car \n Press 5: compact cars \n Press 6 : SUV");
-        String answer33 = sc1.nextLine();
-
-        System.out.println("What is the color of the car");
-        String answer4 = sc1.nextLine();
-
-        System.out.println("What is the mileage of the car? ");
-        answerMileage = sc1.nextInt();
-
-        if (answerMileage < 100) {
-            tempAns2 = "1";
-
-        }
-
-        if (answerMileage >= 100 && answerMileage <= 50000) {
-
-            tempAns2 = "2";
-        }
-
-        if (answerMileage > 50000 && answerMileage <= 100000) {
-            tempAns2 = "3";
-
-        }
-
-        if (answerMileage > 100000) {
-            tempAns2 = "4";
-
-        }
-
-        String final1 = tempansw + answer33 + tempAns2;
-
-        System.out.println("What is your adress");
-        OwnersAdress = sc1.nextLine();
-
-        sc1.nextLine();
-
-        System.out.println("What is your phone number");
-        OwnersPhoneNumbers = sc1.nextLine();
-
-        inventory.put(new Posted(answer1, answer2, answer3, OwnersAdress, OwnersPhoneNumbers, answer4, answerMileage), final1);  // ask Junior if he wants to make a seperate Inventory for new Vehicules 
-
-        System.out.println("Your post has been added to our application!");
-        return "";
+        return tempansw;
 
     }
 
@@ -154,10 +257,18 @@ public class Inventory {
     }
 
     public Posts displayInventoryPositionDecision() {   // gets the Car that the person chose depending on the inventory position
+        Scanner sc1 = new Scanner(System.in);
         Posts psts = null;
+        int answer = 0;
+        try {
+            System.out.println(" \n Choose the vehicule u want to take a look  depending on the inventory position ");
+            answer = sc1.nextInt();
 
-        System.out.println(" \n Choose the vehicule u want to take a look  depending on the inventory position: ");
-        int answer = sc.nextInt();
+        } catch (Exception e) {
+
+            return displayInventoryPositionDecision();
+
+        }
 
         Set set = inventoryCopy.keySet();
         int position = 0;
@@ -182,38 +293,42 @@ public class Inventory {
             }
 
         }
+        System.out.println(finalPost);
         return finalPost;
     }
 
     public void Decision() throws IOException {
 
-        LocalDate localdate2 = LocalDate.now(Clock.systemUTC());
-        LocalDateTime now = LocalDateTime.now();
+        Scanner sc1 = new Scanner(System.in);
+        Scanner sc2 = new Scanner(System.in);
 
         CustomerServiceAgent csa = new CustomerServiceAgent();
+        // if (csa.getClientsFirstName() != null && csa.getClientsLastName() != null) {
         csa.getName();
+        //}
+
         Posts tempPost = finalPost;
 
         double downPaymentAmount = (0.10 * tempPost.getPrice());
 
         if (tempPost.getType().equals("Posted")) {
 
-            System.out.println(" \n Do you want to buy the vehicule or book an appointment with owner,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n  press 2 to book appointment with owner ");
+            System.out.println(" \n Do you want to buy the vehicule or book an appointment with owner,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n  press 2 to book appointment with owner \n press 3 to return to main menu ");
 
-            int answer = sc.nextInt();
+            int answer = sc1.nextInt();
 
             if (answer == 1) {
 
                 System.out.println("The total for the down payment will be : " + downPaymentAmount);
 
                 System.out.println("Enter your  16 digit card number");
-                String answer1 = sc1.nextLine();
+                String answer1 = sc2.nextLine();
 
                 System.out.println("Enter the Exp date");
-                String answer2 = sc1.nextLine();
+                String answer2 = sc2.nextLine();
 
                 System.out.println("Enter CVV");
-                String answer3 = sc1.nextLine();
+                String answer3 = sc2.nextLine();
 
                 // add file ouput as the bill
                 System.out.println("Your " + tempPost.getBrand() + "," + tempPost.getModel() + " has been reserved at " + OwnersAdress);
@@ -223,33 +338,48 @@ public class Inventory {
                 br.write(" Thank you " + csa.getClientsFirstName() + csa.getClientsLastName() + " for using  ForTheLow " + "to buy your " + tempPost.getBrand() + tempPost.getModel() + " \n here is your bill " + "You payed " + authorFirstName + ", " + authorLastName + " a down payment of : " + downPaymentAmount + " on " + java.time.LocalDate.now() + " at " + java.time.LocalTime.now());
 
                 br.close();
-
+           
+ inventory.remove(tempPost);
+                         inventoryCopy.remove(tempPost);
+            
             }
 
             if (answer == 2) {
 
                 System.out.println("Here is the phone number of the Owner : " + OwnersPhoneNumbers + " you may call him to book an appointment");
-
+             
+              inventory.remove(tempPost);
+                         inventoryCopy.remove(tempPost);
             }
 
         } else if (tempPost.getType().equals("Posts")) {
+            int answer = 0;
 
-            System.out.println(" \n Do you want to buy the vehicule or lease it?,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n press 2 to lease \n press 3 to book appointment with dealer ");
+            try {
+                System.out.println(" \n Do you want to buy the vehicule or lease it?,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n press 2 to lease \n press 3 to book appointment with dealer \n press 4 to return to main menu ");
 
-            int answer = sc.nextInt();
+                answer = sc1.nextInt();
+
+            } catch (Exception e) {
+                Scanner sc21 = new Scanner(System.in);
+                answer = sc21.nextInt();
+                //   answer = questionPosts();
+
+            }
 
             if (answer == 1) {
+                Scanner sc11 = new Scanner(System.in);
 
                 System.out.println("The total for the down payment will be : " + downPaymentAmount);
 
                 System.out.println("Enter your  9 digit card number");
-                String answer1 = sc1.nextLine();
+                String answer1 = sc11.nextLine();
 
                 System.out.println("Enter the Exp date");
-                String answer2 = sc1.nextLine();
+                String answer2 = sc11.nextLine();
 
                 System.out.println("Enter CVV");
-                String answer3 = sc1.nextLine();
+                String answer3 = sc11.nextLine();
 
                 System.out.println("Your " + tempPost.getBrand() + "," + tempPost.getModel() + " has been reserved at " + tempPost.getAddressOfDealer());
 
@@ -261,13 +391,17 @@ public class Inventory {
                 br.write(" Thank you " + csa.getClientsFirstName() + csa.getClientsLastName() + " for shopping with ForTheLow " + " \n here is your bill " + "You payed " + downPaymentAmount + " on " + java.time.LocalDate.now() + " at " + java.time.LocalTime.now());
                 br.close();
 
+            //    tempRemoves.put(tempPost, tempPost.getSetOfNbrs());
+                inventory.remove(tempPost);
+                         inventoryCopy.remove(tempPost);
+            
             }
 
             if (answer == 2) {
 
                 System.out.println("For how many years do you want to lease it");
 
-                int answer2 = sc.nextInt();
+                int answer2 = sc1.nextInt();
 
                 System.out.println("Your details have been sent to the dealership at" + tempPost.getAddressOfDealer());
 
@@ -277,23 +411,59 @@ public class Inventory {
 
                 br.write("Thank you " + csa.getClientsFirstName() + "," + csa.getClientsLastName() + " for dealing with ForTheLow " + " The dealership at " + tempPost.getAddressOfDealer() + " will get back to you soon");
                 br.close();
-
+             //   tempRemoves.put(tempPost, tempPost.getSetOfNbrs());
+             
+              inventory.remove(tempPost);
+                         inventoryCopy.remove(tempPost);
             }
 
             if (answer == 3) {
 
                 System.out.println("Here is the adress of the dealership : " + tempPost.getAddressOfDealer() + " \n Here is the phone number : " + tempPost.getPhoneNumber());
-
-                //    inventory.remove(tempPost);
+            //    tempRemoves.put(tempPost, tempPost.getSetOfNbrs());
+            
+             inventory.remove(tempPost);
+                         inventoryCopy.remove(tempPost);
             }
 
         }
 
     }
 
-    public Inventory sort() {
+    public int questionPosts() {
+        Scanner sc1 = new Scanner(System.in);
 
-        return null;
+        int answer = 0;
+
+        try {
+
+            System.out.println(" \n Do you want to buy the vehicule or lease it?,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n press 2 to lease \n press 3 to book appointment with dealer \n press 4 to return to main menu ");
+
+            answer = sc1.nextInt();
+
+            if (answer <= 0 || answer > 4) {
+
+                System.out.println("Enter an answer between 1 and 4 plz");
+                return questionPosts();
+            }
+
+        } catch (Exception e) {
+
+            System.out.println("Enter the proper Input");
+            return questionPosts();
+        }
+
+        return answer;
+    }
+
+    public int questionPosted() {
+
+        Scanner sc1 = new Scanner(System.in);
+        System.out.println(" \n Do you want to buy the vehicule or book an appointment with owner,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n  press 2 to book appointment with owner \n press 3 to return to main menu ");
+
+        int answer = sc1.nextInt();
+
+        return 0;
     }
 
     public TreeMap<Posts, String> getInventory() {
@@ -303,6 +473,8 @@ public class Inventory {
     public void setInventory(TreeMap<Posts, String> inventory) {
         this.inventory = inventory;
     }
+
+    
 
     public Inventory() {
 
@@ -321,19 +493,27 @@ public class Inventory {
         inventory.put(new Posts(45800.0, "Mercedes-Benz", " S-Class S550 2015", "7800 Decarie Blvd, Montreal, Quebec H4P 2H4", "(514) 359-7171", "black", 149179), "244");
         inventory.put(new Posts(76888.00, "Maserati", "Levante Q4S 2018", "  8525 Decarie Blvd, Mount Royal, Quebec H4P 2J2", "(514) 738-3030", "white", 1500), "462");
         inventory.putAll(posteds);
-        
+       
+   
+       
         this.inventoryCopy = inventory;
+
     }
-    public static TreeMap<Posts, String> posted(Posts p, String value){
+
+    public static TreeMap<Posts, String> posted(Posts p, String value) {
         posteds = new TreeMap<Posts, String>();
         posteds.put(p, value);
-        
+
         return posteds;
     }
+
     public Inventory(Comparator com) {
 
         this.inventory = new TreeMap<>(com);
         this.inventoryCopy = inventory;
     }
+
+}
+
 
 }
