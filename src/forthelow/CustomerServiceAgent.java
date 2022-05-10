@@ -1,5 +1,9 @@
-
-package forthelow;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,9 +12,14 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
+/**
+ *
+ * @author 2177095
+ */
 class CustomerServiceAgent {
 
-    private String clientsFirstName;
+   
+private String clientsFirstName;
     private String clientsLastName;
 
     public String getClientsFirstName() {
@@ -46,25 +55,25 @@ class CustomerServiceAgent {
 
         Scanner sc = new Scanner(System.in);
         String stringPref = "";
-        try {
-            System.out.println("What is your income? \n Press 1: <25K \n Press 2: 25K - 50K annually \n Press 3: 50K -75K annually \n Press 4: 75K - 100K annually \n Press 5: 100K and above");
-            int answer01 = sc.nextInt();
+    
+         //   System.out.println("What is your income? \n Press 1: <25K \n Press 2: 25K - 50K annually \n Press 3: 50K -75K annually \n Press 4: 75K - 100K annually \n Press 5: 100K and above");
+            int answer01 =      question1();         
 
-            ////    String answer1 =   String.valueOf(question1());    // sc.nextLine();
-            System.out.println("Do you have a preferred car model? \n Press 1: minivan \n Press 2: sportscar \n Press 3: pick-up truck \n Press 4: luxury car \n Press 5: compact cars \n Press 6 : SUV");
-            int answer02 = sc.nextInt();
-            ////   String answer2 = String.valueOf(question2());
+            
+           // System.out.println("Do you have a preferred car model? \n Press 1: minivan \n Press 2: sportscar \n Press 3: pick-up truck \n Press 4: luxury car \n Press 5: compact cars \n Press 6 : SUV");
+            int answer02 =  question2();                   // sc.nextInt();
+           
 
-            System.out.println("What mileage? \n Press 1: brand new (no mileage) \n Press 2: 100km - 50k km \n Press 3: 50k-100k km \n Press 4: 100k+ km");
-            int answer03 = sc.nextInt();
+           // System.out.println("What mileage? \n Press 1: brand new (no mileage) \n Press 2: 100km - 50k km \n Press 3: 50k-100k km \n Press 4: 100k+ km");
+            int answer03 =  question3();                 //sc.nextInt();
             ////  String answer3 = String.valueOf(question3());
 
             stringPref = stringPref + answer01 + answer02 + answer03;
 
-        } catch (Exception e) {
-            System.out.println("Try again!");
-            return questions();
-        }
+        //} catch (Exception e) {
+         //   System.out.println("Try again!");
+       //     return questions();
+     //   }
         return stringPref;
     }
 
@@ -203,6 +212,10 @@ class CustomerServiceAgent {
             }
         }
         return null;
-    }
-
+    }     
+     
+     
+     
+     
 }
+
