@@ -1,8 +1,7 @@
-
 package forthelow;
 
 public class Posts extends Cars implements Comparable<Posts> {
-    
+
     private Cars carToSell;
 
     private int inventoryPosition;
@@ -40,13 +39,9 @@ public class Posts extends Cars implements Comparable<Posts> {
     public int compareTo(Posts o) {
 
         int value = this.getBrand().compareTo(o.getBrand());
-        if (!this.getKeywords().equals(o.getKeywords())) {
-            value = 1;
-        }
 
         return value;
 
-//To change body of generated methods, choose Tools | Templates.
     }
 
 }
