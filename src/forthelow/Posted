@@ -18,7 +18,7 @@ public class Posted extends Posts{
     String type  = "Posted";
 
     public String getType() {
-        return type;
+        return this.type;
     }
     
 }
