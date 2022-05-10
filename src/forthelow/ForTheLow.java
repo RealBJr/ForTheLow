@@ -8,7 +8,7 @@ import java.util.TreeMap;
 public class ForTheLow {
 
     public static void main(String[] args) throws IOException {
-        UserManagement userM = new UserManagement();
+       UserManagement userM = new UserManagement();
 
 //        Scanner sc = new Scanner(System.in);
 //        Scanner sc2 = new Scanner(System.in); // we created a second scanner because the first one would statr to bug
@@ -27,12 +27,14 @@ public class ForTheLow {
                             SearchBar search = new SearchBar();
                             System.out.println("What car u want?");
                             String ans1 = sc2.nextLine();
-                            System.out.println("How do you want to sort: 1 = Price wise, 2 = Mileage wise");
+                            // System.out.println("How do you want to sort: 1 = Price wise, 2 = Mileage wise");
 
-        int ans2 = sc.nextInt();
+                            // int ans2 = sc.nextInt();  
+                            int ans2 = userM.recursiveSort();
+
                             if (ans2 == 1) {
-                                
-                                Inventory newInv = search.search( ans1, new Comparators1());
+
+                                Inventory newInv = search.search(ans1, new Comparators1());
                                 if (newInv.getInventoryCopy().isEmpty()) {
                                     System.out.println("That car doesnt exist");
                                     break OUTER;
@@ -43,8 +45,8 @@ public class ForTheLow {
                                 //     inv.getInventory().remove(chosenPost);
                                 //   inv.getInventoryCopy().remove(chosenPost);
                             } else if (ans2 == 2) {
-                                Inventory newInv2 = search.search( ans1, new Comparators2());
-                                if (newInv2.getInventory().isEmpty()) {
+                                Inventory newInv2 = search.search(ans1, new Comparators2());
+                                if (newInv2.getInventoryCopy().isEmpty()) {
                                     System.out.println("That car doesnt exist");
                                     break OUTER;
                                 }
@@ -69,7 +71,7 @@ public class ForTheLow {
                             break;
                         case 3:
                             //  Inventory inv3 = new Inventory();
-                            
+
                             inv.sellMyVehicule();
                             break;
                         case 4:
@@ -97,5 +99,8 @@ public class ForTheLow {
         }
 
     }
+
+}
+
 
 }
