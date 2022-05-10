@@ -1,23 +1,19 @@
 package forthelow;
 
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class SearchBar {
 
-  public Inventory search(String search, Comparator com) {
-
+    public Inventory search(String search, Comparator com) {
+        Inventory inventory = new Inventory();
         Inventory result = new Inventory(com);
 
         for (int i = 0; i < search.length(); i++) {
 
             if (search.charAt(i) == ' ') {
                 String keyword = search.substring(0, i);
-                Inventory inventory = new Inventory();
 
                 List<Posts> collected = inventory.getInventory().keySet()
                         .stream()
@@ -33,7 +29,6 @@ public class SearchBar {
             } else if (i == search.length() - 1) {
 
                 String keyword = search;
-                Inventory inventory = new Inventory();
 
                 List<Posts> collected = inventory.getInventory().keySet()
                         .stream()
@@ -48,5 +43,4 @@ public class SearchBar {
 
         return result;
     }
-
 }
