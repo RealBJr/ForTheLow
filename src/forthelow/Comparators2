@@ -13,13 +13,14 @@ import java.util.Comparator;
  */
 public class Comparators2 implements Comparator<Posts> {
 
-    @Override
+     @Override
     public int compare(Posts o1, Posts o2) {
       
     return o1.getMileage() - o2.getMileage();
 
 //To change body of generated methods, choose Tools | Templates.
     }
+    
     
     
     
