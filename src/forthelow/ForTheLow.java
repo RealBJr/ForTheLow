@@ -1,14 +1,24 @@
-package forthelow;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1;
 
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.Scanner;
 import java.util.TreeMap;
 
+/**
+ *
+ * @author 2177095
+ */
 public class ForTheLow {
 
     public static void main(String[] args) throws IOException {
-       UserManagement userM = new UserManagement();
+
+        UserManagement userM = new UserManagement();
 
 //        Scanner sc = new Scanner(System.in);
 //        Scanner sc2 = new Scanner(System.in); // we created a second scanner because the first one would statr to bug
@@ -102,5 +112,3 @@ public class ForTheLow {
 
 }
 
-
-}
