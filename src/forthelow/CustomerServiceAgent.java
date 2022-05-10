@@ -1,17 +1,25 @@
-package forthelow;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.Stack;
 import java.util.TreeMap;
 
-public class CustomerServiceAgent {
- 
-    
-     private  String clientsFirstName;
+/**
+ *
+ * @author 2177095
+ */
+class CustomerServiceAgent {
+
+   
+  private  String clientsFirstName;
   private  String clientsLastName;
 
     public String getClientsFirstName() {
@@ -50,21 +58,136 @@ public class CustomerServiceAgent {
       public String questions(){
         
         Scanner sc = new Scanner(System.in);
-        
+        String stringPref = "";
+        try {
         System.out.println("What is your income? \n Press 1: <25K \n Press 2: 25K - 50K annually \n Press 3: 50K -75K annually \n Press 4: 75K - 100K annually \n Press 5: 100K and above");
-        String answer1 = sc.nextLine();
+        int answer01 = sc.nextInt();
         
-        System.out.println("Do you have a preferred car model? \n Press 1: minivan \n Press 2: sportscar \n Press 3: pick-up truck \n Press 4: luxury car \n Press 5: compact cars \n Press 6 : SUV");
-        String answer2 = sc.nextLine();
+        
+          
+        
+    ////    String answer1 =   String.valueOf(question1());    // sc.nextLine();
+               
+        
+        
+       System.out.println("Do you have a preferred car model? \n Press 1: minivan \n Press 2: sportscar \n Press 3: pick-up truck \n Press 4: luxury car \n Press 5: compact cars \n Press 6 : SUV");
+       int answer02 = sc.nextInt();
+     ////   String answer2 = String.valueOf(question2());
         
         System.out.println("What mileage? \n Press 1: brand new (no mileage) \n Press 2: 100km - 50k km \n Press 3: 50k-100k km \n Press 4: 100k+ km");
-        String answer3 = sc.nextLine();
+        int answer03 = sc.nextInt();
+      ////  String answer3 = String.valueOf(question3());
         
-        String stringPref =  answer1 + answer2 + answer3;
+         stringPref = stringPref + answer01 + answer02 + answer03;
         
+        }catch(Exception e) {
+            System.out.println("Try again!");
+            return questions();
+        }
         return stringPref ;
     }
+      
+      public int question1(){
+        
+           Scanner sc = new Scanner(System.in);
+          
+          
+          int answer01 = 0;
+          
+          
+          try {
+          System.out.println("What is your income? \n Press 1: <25K \n Press 2: 25K - 50K annually \n Press 3: 50K -75K annually \n Press 4: 75K - 100K annually \n Press 5: 100K and above");
+         answer01 = sc.nextInt();
+          
+            if (answer01 <= 0 || answer01 >5) {
+                
+                System.out.println("Enter an answer between 1 and 5 plz");
+                
+                 return question1();
+            }
+          
+          
+        }catch(Exception e) {
+            System.out.println("Enter the proper input");
+            return question1();
+            
+            
+        }
+        
+         
+        
+        return answer01;
     
+          
+      }
+      
+      public int question2(){
+          Scanner sc = new Scanner(System.in);
+          
+          int answer02 = 0;
+          try {
+              
+                System.out.println("Do you have a preferred car model? \n Press 1: minivan \n Press 2: sportscar \n Press 3: pick-up truck \n Press 4: luxury car \n Press 5: compact cars \n Press 6 : SUV");
+        answer02 = sc.nextInt();
+              
+         if (answer02 <= 0 || answer02 >6) {
+                
+                System.out.println("Enter an answer between 1 and 6 plz");
+                
+                 return question2();
+            }
+          
+        
+        
+          } catch(Exception e) {
+              
+              
+              System.out.println("Enter the proper input");
+            return question2();
+              
+          }
+        
+       
+          
+          
+       
+          
+          
+          return answer02;
+      }
+    
+      public int question3(){
+          Scanner sc = new Scanner(System.in);
+          
+          int answer03 = 0;
+          
+          try {
+              
+          
+            System.out.println("What mileage? \n Press 1: brand new (no mileage) \n Press 2: 100km - 50k km \n Press 3: 50k-100k km \n Press 4: 100k+ km");
+         answer03 = sc.nextInt();
+         
+         if (answer03 <= 0 || answer03 >4) {
+                
+                System.out.println("Enter an answer between 1 and 4 plz");
+                
+                 return question3();
+            }
+         
+          
+          } catch(Exception e) {
+              
+                 System.out.println("Enter the proper input");
+            return question3();
+              
+              
+          }
+          
+          return answer03;
+      }
+      
+      
+      
    public Inventory displayCarPreferences(String answerList) {
         
         Inventory cars = new Inventory();
@@ -133,7 +256,6 @@ public class CustomerServiceAgent {
      
      
      
-    
-    
-    
+     
+     
 }
