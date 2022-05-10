@@ -1,4 +1,6 @@
-/*
+
+     
+   /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -48,7 +50,7 @@ class Inventory {
             put(new Posts(24888.0, "Subaru", "Forester Touring 2017", " 4900 Pare St, Montreal, Quebec H4P 1P3", " (514) 737-1880", "orange", 49324), "162");
             put(new Posts(45800.0, "Mercedes-Benz", " S-Class S550 2015", "7800 Decarie Blvd, Montreal, Quebec H4P 2H4", "(514) 359-7171", "black", 149179), "244");
             put(new Posts(76888.00, "Maserati", "Levante Q4S 2018", "  8525 Decarie Blvd, Mount Royal, Quebec H4P 2J2", "(514) 738-3030", "white", 1500), "462");
-
+          
         }
     };
 
@@ -347,22 +349,19 @@ class Inventory {
 
             Scanner sc1 = new Scanner(System.in);
             int answer = 0;
-            
+
             try {
-            
+
                 answer = questionPosted();
-                
-                
-            } catch(Exception e) {
-                
+
+            } catch (Exception e) {
+
                 answer = questionPosted();
-                
+
             }
-            
-           // System.out.println(" \n Do you want to buy the vehicule or book an appointment with owner,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n  press 2 to book appointment with owner \n press 3 to return to main menu ");
 
+            // System.out.println(" \n Do you want to buy the vehicule or book an appointment with owner,\n press 1 to Reserve if you are ready to buy, and proceed with the downpayment \n  press 2 to book appointment with owner \n press 3 to return to main menu ");
             //int answer = sc1.nextInt();
-
             if (answer == 1) {
                 Scanner sc2 = new Scanner(System.in);
                 System.out.println("The total for the down payment will be : " + downPaymentAmount);
@@ -451,7 +450,7 @@ class Inventory {
 
                 BufferedWriter br = new BufferedWriter(new FileWriter("Appointment"));
 
-                br.write("Thank you " + csa.getClientsFirstName() + ", " + csa.getClientsLastName() + " for dealing with ForTheLow " + " The dealership at " + tempPost.getAddressOfDealer() + " will get back to you soon");
+                br.write("Thank you " + csa.getClientsFirstName() + ", " + csa.getClientsLastName() + " for dealing with ForTheLow " + " The dealership at " + tempPost.getAddressOfDealer() + " will get back to you soon " + " \n request was processed on " + " on " + java.time.LocalDate.now() + " at " + java.time.LocalTime.now());
                 br.close();
                 //   tempRemoves.put(tempPost, tempPost.getSetOfNbrs());
 
