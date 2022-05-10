@@ -48,22 +48,4 @@ public class SearchBar {
         return result;
     }
 
-    public static void main(String[] args) {
-        Inventory i = new Inventory();
-        i.display();
-        i.posted(new Posts(76888.00, "Maserati", "Levante Q4S 2018",
-                "  8525 Decarie Blvd, Mount Royal, Quebec H4P 2J2", "(514) 738-3030", "red", 1500), "442");
-        
-        
-               
-        System.out.println("");
-        
-        i.display();
-        
-        System.out.println("");
-        
-        SearchBar s = new SearchBar();
-        s.search("red", new Comparators1()).display();
-    }
-
 }
