@@ -392,7 +392,7 @@ public class Inventory {
 
                 System.out.println("The total for the down payment will be : " + downPaymentAmount);
 
-                System.out.println("Enter your  9 digit card number");
+                System.out.println("Enter your  16 digit card number");
                 String answer1 = sc2.nextLine();
 
                 System.out.println("Enter the Exp date");
