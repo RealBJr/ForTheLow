@@ -13,7 +13,7 @@ public class SearchBar {
         for (int i = 0; i < search.length(); i++) {
 
             if (search.charAt(i) == ' ') {
-                String keyword = search.substring(0, i);
+                String keyword = search.substring(0, i).toLowerCase();
 
                 List<Posts> collected = inventory.getInventory().keySet()
                         .stream()
@@ -28,7 +28,7 @@ public class SearchBar {
 
             } else if (i == search.length() - 1) {
 
-                String keyword = search;
+                String keyword = search.toLowerCase();
 
                 List<Posts> collected = inventory.getInventory().keySet()
                         .stream()
@@ -43,4 +43,5 @@ public class SearchBar {
 
         return result;
     }
+
 }
