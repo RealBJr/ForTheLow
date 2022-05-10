@@ -1,9 +1,18 @@
 
-package forthelow;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1;
 
 import java.util.ArrayList;
 
-abstract public class Cars {
+/**
+ *
+ * @author 2177095
+ */
+public class Cars {
 
     private double price;
     private String brand;
@@ -158,12 +167,9 @@ abstract public class Cars {
         this.keywords = keywords;
     }
 
-      @Override
+    @Override
     public String toString() {
-        return 
-                "price: " + price + ", brand:" + brand + ", color:" + color + ", model:" + model + ", mileage:" + mileage + "km" + "}";
+        return "price: " + price + ", brand:" + brand + ", color:" + color + ", model:" + model + ", mileage:" + mileage + "km" + "}";
     }
 
-
 }
-
